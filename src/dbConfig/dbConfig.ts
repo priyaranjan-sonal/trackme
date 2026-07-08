@@ -2,7 +2,11 @@ import mongoose from "mongoose";
 
 export async function connect() {
     try {
-        mongoose.connect(process.env.MONGO_URI!)
+        if (mongoose.connection.readyState >= 1) {
+            return
+        }
+
+        await mongoose.connect(process.env.MONGO_URI!)
         const connection = mongoose.connection
 
 
@@ -11,8 +15,8 @@ export async function connect() {
         })
         
         connection.on('error', (err) => {
-            console.log("MongoDB connection error: " + err)
-            process.exit()
+            console.log("MongoDB connection error: ", err)
+            process.exit(1)
         })
 
 

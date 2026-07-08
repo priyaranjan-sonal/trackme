@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-prsBlue: #353EFB;
-  --color-prsRed: #DC2626;
-  --color-prsGray: #8A898D;
-  --color-prsCloud: #CBDDE9;
-  --color-prsOcean: #2872A1;
+  --color-prsBlack: #000000;
+  --color-prsGreen: #22c55e;
+  --color-prsCyan: #00ffea;
 }
 
 :root {
@@ -22,17 +20,16 @@ body {
   margin: 0;
   min-height: 100%;
   background: #000000;
-  color: #ffffff;
+  color: white;
 }
 
-/* Autofill: keep our light card field color instead of browser yellow/blue */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-text-fill-color: #475569;
-  -webkit-box-shadow: 0 0 0 1000px #ffffff inset;
-  box-shadow: 0 0 0 1000px #ffffff inset;
-  caret-color: #475569;
+  -webkit-text-fill-color: rgb(255 255 255 / 0.8);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-prsBlack) inset;
+  box-shadow: 0 0 0 1000px var(--color-prsBlack) inset;
+  caret-color: rgb(255 255 255 / 0.8);
   transition: background-color 9999s ease-in-out 0s;
 }
