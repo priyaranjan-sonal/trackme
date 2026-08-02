@@ -7,6 +7,9 @@ import Navbar from "@/components/Navbar"
 export const metadata: Metadata = {
   title: "MovieTrack",
   description: "Track and manage your movie watchlist",
+  icons: {
+    icon: "/icon2.png"
+  },
 }
 
 export default function RootLayout({
@@ -24,9 +27,9 @@ export default function RootLayout({
             position="top-center"
             toastOptions={{
               style: {
-                background: "#1a1a1a",
-                color: "#fff",
-                border: "1px solid rgba(34, 197, 94, 0.2)",
+                background: "#12121d",
+                color: "#f4f4f6",
+                border: "1px solid rgba(99, 102, 241, 0.2)",
               },
             }}
           />

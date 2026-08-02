@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import React from "react"
+import Image from "next/image"
 import { AxiosError } from "axios"
 import toast from "react-hot-toast"
 import { useAuth } from "@/context/AuthContext"
@@ -52,13 +53,17 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-prsBlack px-4 py-12">
-      <div className="w-full max-w-md rounded-4xl border border-prsGreen/50 bg-prsGreen/5 p-8 shadow-[0_0_32px_color-mix(in_srgb,var(--color-prsGreen)_25%,transparent)] sm:p-10">
+    <main className="flex min-h-screen items-center justify-center bg-prsBg px-4 py-12">
+      <div className="w-full max-w-md rounded-4xl border border-prsPrimary/50 bg-prsPrimary/5 p-8 shadow-[0_0_32px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)] sm:p-10">
         <header className="mb-6 flex justify-center">
-          <Link href="/" className="inline-flex">
-            <span className="flex size-9 items-center justify-center rounded-2xl border border-prsGreen/50 bg-prsGreen/5 p-6 text-lg font-bold text-prsGreen transition-all hover:border-prsCyan hover:bg-prsCyan/10 hover:text-prsCyan">
-              M
-            </span>
+          <Link href="/" className="inline-flex opacity-100 transition-opacity hover:opacity-90">
+            <Image
+              src="/logo.png"
+              alt="MovieTrack"
+              width={163}
+              height={48}
+              className="h-7 w-auto sm:h-9"
+            />
           </Link>
         </header>
 
@@ -81,11 +86,11 @@ export default function SignupPage() {
               placeholder=" "
               value={user.name}
               onChange={(e) => setUser({ ...user, name: e.target.value })}
-              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBlack px-4 py-3.5 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsGreen/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsGreen)_25%,transparent)]"
+              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBg px-4 py-3.5 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsPrimary/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)]"
             />
             <label
               htmlFor="name"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBlack peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsGreen peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBlack peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsGreen/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBlack peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsGreen/80"
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBg peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsPrimary peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBg peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsPrimary/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBg peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsPrimary/80"
             >
               Name
             </label>
@@ -100,11 +105,11 @@ export default function SignupPage() {
               placeholder=" "
               value={user.email}
               onChange={(e) => setUser({ ...user, email: e.target.value })}
-              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBlack px-4 py-3.5 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsGreen/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsGreen)_25%,transparent)]"
+              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBg px-4 py-3.5 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsPrimary/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)]"
             />
             <label
               htmlFor="email"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBlack peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsGreen peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBlack peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsGreen/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBlack peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsGreen/80"
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBg peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsPrimary peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBg peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsPrimary/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBg peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsPrimary/80"
             >
               Email
             </label>
@@ -119,11 +124,11 @@ export default function SignupPage() {
               placeholder=" "
               value={user.password}
               onChange={(e) => setUser({ ...user, password: e.target.value })}
-              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBlack px-4 py-3.5 pr-11 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsGreen/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsGreen)_25%,transparent)]"
+              className="peer w-full rounded-2xl border border-slate-400/30 bg-prsBg px-4 py-3.5 pr-11 text-sm text-white/80 outline-none transition-[border-color,box-shadow] duration-200 focus:border-prsPrimary/40 focus:shadow-[0_0_0_1px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)]"
             />
             <label
               htmlFor="password"
-              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBlack peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsGreen peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBlack peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsGreen/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBlack peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsGreen/80"
+              className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-sm text-slate-400/40 transition-all duration-200 peer-focus:top-0 peer-focus:-translate-y-1/2 peer-focus:bg-prsBg peer-focus:px-1 peer-focus:text-xs peer-focus:text-prsPrimary peer-autofill:top-0 peer-autofill:-translate-y-1/2 peer-autofill:bg-prsBg peer-autofill:px-1 peer-autofill:text-xs peer-autofill:text-prsPrimary/80 peer-not-placeholder-shown:top-0 peer-not-placeholder-shown:-translate-y-1/2 peer-not-placeholder-shown:bg-prsBg peer-not-placeholder-shown:px-1 peer-not-placeholder-shown:text-xs peer-not-placeholder-shown:text-prsPrimary/80"
             >
               Password
             </label>
@@ -151,7 +156,7 @@ export default function SignupPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full rounded-2xl bg-prsGreen py-3.5 text-sm font-semibold text-prsBlack shadow-[0_4px_20px_color-mix(in_srgb,var(--color-prsGreen)_30%,transparent)] transition hover:bg-[#1cb053] active:scale-[0.99] hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-2xl bg-prsPrimaryDark py-3.5 text-sm font-semibold text-white transition hover:brightness-90 active:scale-[0.99] hover:cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Creating account..." : "Create account"}
           </button>
@@ -161,7 +166,7 @@ export default function SignupPage() {
           Already have an account?{" "}
           <Link
             href="/login"
-            className="font-semibold text-prsGreen transition-opacity hover:opacity-80"
+            className="font-semibold text-prsPrimary transition-opacity hover:opacity-80"
           >
             Log in
           </Link>
@@ -169,7 +174,7 @@ export default function SignupPage() {
 
         <Link
           href="/"
-          className="mt-6 flex items-center justify-center gap-1.5 text-sm text-white/40 transition-colors hover:text-prsGreen"
+          className="mt-6 flex items-center justify-center gap-1.5 text-sm text-white/40 transition-colors hover:text-prsPrimary"
         >
           <span aria-hidden="true">&larr;</span>
           Back to Home

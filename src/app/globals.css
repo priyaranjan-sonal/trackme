@@ -1,14 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-prsBlack: #000000;
-  --color-prsGreen: #22c55e;
-  --color-prsCyan: #00ffea;
+  --color-prsBg: #0b0b14;
+  --color-prsSurface: #12121d;
+  --color-prsElevated: #171728;
+  --color-prsPrimary: #6366f1;
+  --color-prsPrimaryDark: #4f46e5;
+  --color-prsAccent: #a78bfa;
 }
 
 :root {
   color-scheme: dark;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
 }
 
 * {
@@ -19,17 +23,84 @@ html,
 body {
   margin: 0;
   min-height: 100%;
-  background: #000000;
-  color: white;
+  background: var(--color-prsBg);
+  color: #f4f4f6;
+}
+
+::selection {
+  background: rgba(99, 102, 241, 0.35);
+  color: #ffffff;
+}
+
+/* ── Dark scrollbars ─────────────────────────────────────────────── */
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(99, 102, 241, 0.25) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background-clip: padding-box;
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-text-fill-color: rgb(255 255 255 / 0.8);
-  -webkit-box-shadow: 0 0 0 1000px var(--color-prsBlack) inset;
-  box-shadow: 0 0 0 1000px var(--color-prsBlack) inset;
-  caret-color: rgb(255 255 255 / 0.8);
+  -webkit-text-fill-color: rgb(244 244 246 / 0.8);
+  -webkit-box-shadow: 0 0 0 1000px var(--color-prsSurface) inset;
+  box-shadow: 0 0 0 1000px var(--color-prsSurface) inset;
+  caret-color: rgb(244 244 246 / 0.8);
   transition: background-color 9999s ease-in-out 0s;
+}
+
+/* ── Entrance animations ─────────────────────────────────────────── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.22s cubic-bezier(0.22, 1, 0.36, 1) both;
 }

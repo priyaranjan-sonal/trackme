@@ -1,7 +1,7 @@
 "use client"
 
 import React, { createContext, useContext, useEffect, useState } from "react"
-import axios, { AxiosError } from "axios"
+import axios from "axios"
 import { useRouter } from "next/navigation"
 import toast from "react-hot-toast"
 
@@ -27,21 +27,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const router = useRouter()
 
   useEffect(() => {
-    fetchUser()
-  }, [])
+    let cancelled = false
 
-  async function fetchUser() {
-    try {
-      const response = await axios.get("/api/users/me")
-      if (response.data.success) {
-        setUser(response.data.user)
-      }
-    } catch {
-      setUser(null)
-    } finally {
-      setLoading(false)
+    axios
+      .get("/api/users/me")
+      .then(response => {
+        if (!cancelled && response.data.success) {
+          setUser(response.data.user)
+        }
+      })
+      .catch(() => {
+        if (!cancelled) setUser(null)
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false)
+      })
+
+    return () => {
+      cancelled = true
     }
-  }
+  }, [])
 
   async function login(email: string, password: string) {
     const response = await axios.post("/api/users/login", { email, password })
@@ -54,7 +59,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     const response = await axios.post("/api/users/signup", { name, email, password })
     setUser(response.data.user)
     toast.success(`Welcome, ${response.data.user.name}!`)
-    router.push("/profile")
+    router.push("/dashboard")
   }
 
   async function logout() {
