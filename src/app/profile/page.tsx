@@ -3,6 +3,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { useEffect, useMemo, useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   Film,
   Tv,
@@ -266,9 +267,16 @@ function EditProfileDialog({
 
 export default function ProfilePage() {
   const { user, loading } = useAuth()
+  const router = useRouter()
   const [items, setItems] = useState<TrackedItem[]>([])
   const [loadingItems, setLoadingItems] = useState(true)
   const [editOpen, setEditOpen] = useState(false)
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/login")
+    }
+  }, [loading, router, user])
 
   useEffect(() => {
     if (!user) return
@@ -326,21 +334,7 @@ export default function ProfilePage() {
   if (loading || (user && loadingItems)) return <ProfileSkeleton />
 
   if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-prsBg px-4 pt-16">
-        <div className="text-center">
-          <p className="mb-6 text-sm text-white/50">
-            Please log in to view your profile.
-          </p>
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 rounded-2xl bg-prsPrimaryDark px-6 py-3 text-sm font-semibold text-white transition-all hover:brightness-90"
-          >
-            Go to Login
-          </Link>
-        </div>
-      </div>
-    )
+    return null
   }
 
   const maxGenre = genres.length > 0 ? genres[0][1] : 0

@@ -5,14 +5,25 @@ async function request<T>(url: string, options?: RequestInit): Promise<T> {
     headers: { "Content-Type": "application/json" },
     ...options,
   })
+
+  if (res.status === 401) {
+    await fetch("/api/users/logout", { method: "POST" }).catch(() => { })
+    if (typeof window !== "undefined") {
+      window.location.href = "/login"
+    }
+    throw new Error("Unauthorized")
+  }
+
   const json = (await res.json().catch(() => ({}))) as {
     success?: boolean
     data?: T
     error?: string
   }
+
   if (!res.ok || json.success === false) {
     throw new Error(json.error || "Request failed")
   }
+
   return json.data as T
 }
 

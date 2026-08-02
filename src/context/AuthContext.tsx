@@ -36,8 +36,17 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           setUser(response.data.user)
         }
       })
-      .catch(() => {
-        if (!cancelled) setUser(null)
+      .catch(error => {
+        if (cancelled) return
+
+        const unauthorized =
+          axios.isAxiosError(error) && error.response?.status === 401
+
+        if (unauthorized) {
+          axios.post("/api/users/logout").catch(() => { })
+        }
+
+        setUser(null)
       })
       .finally(() => {
         if (!cancelled) setLoading(false)

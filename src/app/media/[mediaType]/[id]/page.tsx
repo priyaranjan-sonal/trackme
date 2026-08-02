@@ -568,10 +568,10 @@ export default function MediaDetailPage({
               className="object-cover"
             />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-br from-[#312e81] via-[#1e1b4b] to-black" />
+            <div className="absolute inset-0 bg-linear-to-br from-[#312e81] via-[#1e1b4b] to-black" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-r from-black via-black/85 to-black/10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-prsBg via-transparent to-black/25" />
+          <div className="absolute inset-0 bg-linear-to-r from-black via-black/85 to-black/10" />
+          <div className="absolute inset-0 bg-linear-to-t from-prsBg via-transparent to-black/25" />
 
           <button
             onClick={() => router.back()}
@@ -828,7 +828,7 @@ export default function MediaDetailPage({
                       <p className="text-xs text-white/50">{item.title}</p>
                     </div>
                   )}
-                  <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 to-transparent p-2 pt-8">
+                  <div className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/90 to-transparent p-2 pt-8">
                     <p className="line-clamp-1 text-[11px] font-semibold text-white">
                       {item.title}
                     </p>

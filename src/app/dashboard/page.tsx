@@ -333,6 +333,12 @@ export default function DashboardPage() {
   const router = useRouter()
   const greeting = useGreeting()
 
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/login")
+    }
+  }, [loading, router, user])
+
   const [mediaType, setMediaType] = useState<MediaType>("movie")
   const [trackedItems, setTrackedItems] = useState<TrackedItem[]>([])
   const [trackModal, setTrackModal] = useState<{
@@ -370,21 +376,7 @@ export default function DashboardPage() {
   if (loading) return <LoadingSkeleton />
 
   if (!user) {
-    return (
-      <div className="flex min-h-screen items-center justify-center bg-prsBg px-4 pt-16">
-        <div className="text-center">
-          <p className="mb-6 text-sm text-white/50">
-            Please log in to access your dashboard.
-          </p>
-          <Link
-            href="/login"
-            className="inline-flex items-center gap-2 rounded-2xl bg-prsPrimaryDark px-6 py-3 text-sm font-semibold text-white transition hover:brightness-90"
-          >
-            Go to Login
-          </Link>
-        </div>
-      </div>
-    )
+    return null
   }
 
   const firstName = user.name.split(" ")[0]

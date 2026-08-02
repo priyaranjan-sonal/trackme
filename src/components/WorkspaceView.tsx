@@ -450,9 +450,16 @@ function TrackedCard({
 
 export default function WorkspaceView() {
   const { user, loading } = useAuth()
+  const router = useRouter()
   const [items, setItems] = useState<TrackedItem[]>([])
   const [loadingItems, setLoadingItems] = useState(true)
   const [tab, setTab] = useState<Tab>("all")
+
+  useEffect(() => {
+    if (!loading && !user) {
+      router.replace("/login")
+    }
+  }, [loading, router, user])
 
   useEffect(() => {
     if (!user) return
@@ -476,17 +483,7 @@ export default function WorkspaceView() {
   }
 
   if (!user) {
-    return (
-      <div className="mx-auto w-full max-w-300 px-4 text-center sm:px-6">
-        <p className="mb-4 text-white/50">You need to be logged in.</p>
-        <Link
-          href="/login"
-          className="rounded-2xl bg-prsPrimaryDark px-6 py-3 text-sm font-semibold text-white transition hover:brightness-90"
-        >
-          Go to Login
-        </Link>
-      </div>
-    )
+    return null
   }
 
   const counts = {
