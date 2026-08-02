@@ -141,4 +141,5 @@ export interface MediaSnapshot {
   backdrop?: string
   genres?: string[]
   seasonsMeta?: SeasonMeta[]
+  rating?: number
 }
