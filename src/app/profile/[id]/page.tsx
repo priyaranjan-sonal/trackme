@@ -6,7 +6,7 @@ export default async function UserProfile({ params }: PageProps) {
   const { id } = await params;
 
   return (
-    <div className="pt-16">
+    <div className="pt-8">
       <p>My user Profile {id}</p>
     </div>
   );

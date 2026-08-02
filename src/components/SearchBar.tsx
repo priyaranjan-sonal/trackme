@@ -55,8 +55,8 @@ export default function SearchBar() {
     <div className="relative w-full">
       <div
         className={`flex items-center gap-3 rounded-2xl border px-4 py-2.5 transition-all duration-200 ${focused
-            ? "border-prsPrimary/50 bg-white/6 shadow-[0_0_0_3px_rgba(99,102,241,0.12)]"
-            : "border-white/8 bg-white/3"
+          ? "border-prsPrimary/50 bg-white/6 shadow-[0_0_0_3px_rgba(99,102,241,0.12)]"
+          : "border-white/20 bg-white/3"
           }`}
       >
         <Search className="size-4 shrink-0 text-white/40" />
@@ -132,8 +132,8 @@ export default function SearchBar() {
                     </p>
                     <span
                       className={`shrink-0 rounded px-1.5 py-0.5 text-[9px] font-bold uppercase ${isTv
-                          ? "bg-prsAccent/15 text-prsAccent"
-                          : "bg-prsPrimary/15 text-prsPrimary"
+                        ? "bg-prsAccent/15 text-prsAccent"
+                        : "bg-prsPrimary/15 text-prsPrimary"
                         }`}
                     >
                       {isTv ? "TV" : "Movie"}

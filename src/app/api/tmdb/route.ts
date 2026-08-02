@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import type {
   CastMember,
-  CrewMember,
   Episode,
   MediaItem,
   SeasonDetail,
@@ -154,7 +153,6 @@ function toMovie(raw: Record<string, unknown>, genreMap: Record<number, string>)
     revenue: raw.revenue ?? undefined,
     trailers: toTrailers(raw),
     cast: toCast(raw),
-    crew: toCrew(raw),
     similar: toSimilar(raw, "movie", genreMap),
   }
   return data
@@ -187,7 +185,6 @@ function toTv(raw: Record<string, unknown>, genreMap: Record<number, string>) {
     seasons,
     trailers: toTrailers(raw),
     cast: toCast(raw),
-    crew: toCrew(raw),
     similar: toSimilar(raw, "tv", genreMap),
   }
   return data
@@ -216,24 +213,6 @@ function toCast(raw: Record<string, unknown>): CastMember[] {
     },
     character: typeof c.character === "string" ? c.character : undefined,
   }))
-}
-
-function toCrew(raw: Record<string, unknown>): Record<string, CrewMember[]> {
-  const crew = (raw.credits as { crew?: Array<Record<string, unknown>> })?.crew
-  if (!Array.isArray(crew)) return {}
-  const grouped: Record<string, CrewMember[]> = {}
-  for (const c of crew) {
-    const dept = typeof c.department === "string" ? c.department : "Crew"
-    grouped[dept] = grouped[dept] ?? []
-    grouped[dept].push({
-      person: {
-        name: typeof c.name === "string" ? c.name : undefined,
-        profile: buildImage(c.profile_path, "w185"),
-      },
-      job: typeof c.job === "string" ? c.job : undefined,
-    })
-  }
-  return grouped
 }
 
 function toSimilar(
@@ -313,7 +292,6 @@ function toSeason(raw: Record<string, unknown>): SeasonDetail {
 function toCredits(raw: Record<string, unknown>) {
   return {
     cast: toCast({ credits: raw }) as unknown as CastMember[],
-    crew: toCrew({ credits: raw }) as Record<string, CrewMember[]>,
   }
 }
 

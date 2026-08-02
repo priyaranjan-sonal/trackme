@@ -73,7 +73,7 @@ function fmtRuntime(min?: number): string {
 function LoadingSkeleton() {
   return (
     <div className="min-h-screen overflow-hidden bg-prsBg">
-      <div className="mx-auto w-full max-w-360 px-4 pt-28 sm:px-6">
+      <div className="mx-auto w-full max-w-360 px-4 pt-8 sm:px-6">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
             <div className="mb-5 h-7 w-40 animate-pulse rounded-full bg-white/6" />
@@ -82,7 +82,7 @@ function LoadingSkeleton() {
           </div>
           <div className="h-12 w-full animate-pulse rounded-xl bg-white/5 lg:w-96" />
         </div>
-        <div className="mt-14 h-105 animate-pulse rounded-3xl border border-white/6 bg-white/3" />
+        <div className="mt-14 h-105 animate-pulse rounded-3xl border border-white/10 bg-white/3" />
       </div>
       <div className="mx-auto mt-14 w-full max-w-360 space-y-10 px-4 pb-24 sm:px-6">
         {[1, 2, 3].map(i => (
@@ -162,7 +162,7 @@ function CoverHero({
         <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-linear-to-t from-prsBg via-prsBg/60 to-transparent sm:h-72" />
         <div className="pointer-events-none absolute -top-24 -left-24 size-96 rounded-full bg-prsPrimary/14 blur-[130px]" />
 
-        <div className="relative flex h-full w-full flex-col justify-end px-5 pb-10 sm:px-10 sm:pb-12">
+        <div className="relative flex h-full w-full flex-col justify-center px-5 pb-10 sm:px-10 sm:pb-12">
           {hero ? (
             <>
               <div className="mb-3 flex flex-wrap items-center gap-2">
@@ -174,7 +174,7 @@ function CoverHero({
               </div>
 
               {posterUrl && (
-                <div className="relative mb-4 h-44 w-32 shrink-0 overflow-hidden rounded-xl border border-white/12 bg-white/3 shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+                <div className="relative mb-4 h-44 w-32 shrink-0 overflow-hidden rounded-xl border border-white/15 bg-white/3 shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
                   <Image
                     src={posterUrl}
                     alt={hero?.title ?? "Poster"}
@@ -413,7 +413,7 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            <div className="flex shrink-0 animate-fade-in-up items-center gap-1 rounded-2xl border border-white/8 bg-white/3 p-1">
+            <div className="flex shrink-0 animate-fade-in-up items-center gap-1 rounded-2xl border border-white/15 bg-white/2 p-1">
               {(["movie", "tv"] as MediaType[]).map(t => (
                 <button
                   key={t}

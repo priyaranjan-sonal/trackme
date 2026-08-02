@@ -85,7 +85,7 @@ export default function TrackModal({
 
         {/* Header */}
         <div className="flex items-start gap-4 p-5">
-          <div className="relative h-28 w-19 shrink-0 overflow-hidden rounded-xl border border-prsPrimary/25 bg-white/3">
+          <div className="relative h-28 w-19 shrink-0 overflow-hidden rounded-xl border border-prsPrimary/25 bg-prsBg/30">
             {posterUrl ? (
               <Image
                 src={posterUrl}
@@ -111,7 +111,7 @@ export default function TrackModal({
               </span>
               <button
                 onClick={onClose}
-                className="ml-auto flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+                className="ml-auto flex size-8 items-center justify-center rounded-full border border-white/15 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
                 aria-label="Close"
               >
                 <X className="size-4" />
@@ -136,7 +136,7 @@ export default function TrackModal({
                 onClick={() => setStatus(value)}
                 className={`flex flex-col items-center gap-1.5 rounded-2xl border px-2 py-3 text-[11px] font-semibold transition-all ${status === value
                   ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary shadow-[0_0_16px_rgba(99,102,241,0.2)]"
-                  : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                  : "border-white/15 bg-prsBg/20 text-white/70 hover:border-prsPrimary/30 hover:text-white"
                   }`}
               >
                 <Icon className="size-4" />
@@ -170,7 +170,7 @@ export default function TrackModal({
         <div className="flex gap-2 p-5">
           <button
             onClick={onClose}
-            className="flex-1 rounded-2xl border border-white/10 py-2.5 text-sm font-semibold text-white/60 transition-colors hover:bg-white/5"
+            className="flex-1 rounded-2xl border border-white/15 py-2.5 text-sm font-semibold text-white/60 transition-colors hover:bg-prsBg/20"
           >
             Cancel
           </button>

@@ -58,7 +58,7 @@ export default function MediaCard({
     <div className="group relative shrink-0">
       <button
         onClick={() => onOpen(item)}
-        className="relative block h-57.5 w-38.5 overflow-hidden rounded-2xl border border-white/8 bg-white/3 text-left transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:scale-[1.04] hover:border-prsPrimary/40 hover:shadow-[0_16px_48px_rgba(0,0,0,0.8),0_0_24px_rgba(99,102,241,0.15)] focus:outline-none focus:ring-2 focus:ring-prsPrimary/60 animate-fade-in-up"
+        className="relative block h-57.5 w-38.5 overflow-hidden rounded-2xl border border-white/15 bg-white/3 text-left transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:scale-[1.04] hover:border-prsPrimary/40 hover:shadow-[0_16px_48px_rgba(0,0,0,0.8),0_0_24px_rgba(99,102,241,0.15)] focus:outline-none focus:ring-2 focus:ring-prsPrimary/60 animate-fade-in-up"
         style={{ animationDelay: `${index * 45}ms` }}
       >
         {/* Poster or gradient fallback */}
@@ -101,7 +101,7 @@ export default function MediaCard({
         )}
 
         {/* Media type badge */}
-        <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full border border-white/12 bg-prsBg/70 px-1.5 py-0.5 backdrop-blur-sm">
+        <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full border border-white/15 bg-prsBg/70 px-1.5 py-0.5 backdrop-blur-sm">
           {isTv ? (
             <Tv className="size-2.5 text-prsAccent" />
           ) : (

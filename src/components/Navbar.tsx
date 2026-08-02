@@ -65,7 +65,7 @@ export default function Navbar() {
               <div className="h-5 w-20 animate-pulse rounded bg-white/10" />
             ) : user ? (
               <>
-                <div className="flex items-center gap-1 rounded-xl border border-white/8 bg-white/3 p-1">
+                <div className="flex items-center gap-1 rounded-xl border border-white/15 bg-white/2 p-1">
                   <Link
                     href="/dashboard"
                     className={`flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm font-semibold transition-all ${pathname.startsWith("/dashboard")
@@ -97,7 +97,7 @@ export default function Navbar() {
                     <CircleUserRound className="size-5" />
                   </button>
                   {menuOpen && (
-                    <div className="absolute top-full right-0 mt-2 w-44 overflow-hidden rounded-2xl border border-white/8 bg-prsSurface shadow-[0_24px_60px_rgba(0,0,0,0.7)] animate-scale-in">
+                    <div className="absolute top-full right-0 mt-2 w-44 overflow-hidden rounded-2xl border border-white/15 bg-prsSurface shadow-[0_24px_60px_rgba(0,0,0,0.7)] animate-scale-in">
                       <Link
                         href="/profile"
                         onClick={() => setMenuOpen(false)}
@@ -110,7 +110,7 @@ export default function Navbar() {
                           setMenuOpen(false)
                           logout()
                         }}
-                        className="flex w-full cursor-pointer items-center gap-2 border-t border-white/6 px-4 py-2.5 text-sm font-medium text-red-400 transition-colors hover:bg-red-500/10"
+                        className="flex w-full cursor-pointer items-center gap-2 border-t border-white/15 px-4 py-2.5 text-sm font-medium text-red-400 transition-colors hover:bg-red-500/10"
                       >
                         <LogOut className="size-4" /> Sign Out
                       </button>

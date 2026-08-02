@@ -144,7 +144,7 @@ function EpisodeModal({
         className="relative flex max-h-[88vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-prsPrimary/25 bg-prsSurface shadow-[0_32px_80px_rgba(0,0,0,0.9)] animate-scale-in"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 border-b border-white/6 px-5 py-4">
+        <div className="flex items-center gap-3 border-b border-white/15 px-5 py-4">
           <span className="flex size-9 items-center justify-center rounded-2xl border border-prsPrimary/30 bg-prsPrimary/10">
             <Layers className="size-4 text-prsPrimary" />
           </span>
@@ -154,7 +154,7 @@ function EpisodeModal({
           </div>
           <button
             onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/15 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
             aria-label="Close"
           >
             <X className="size-4" />
@@ -162,7 +162,7 @@ function EpisodeModal({
         </div>
 
         {/* Season selector */}
-        <div className="flex flex-wrap gap-2 border-b border-white/6 px-5 py-3">
+        <div className="flex flex-wrap gap-2 border-b border-white/15 px-5 py-3">
           {seasonsMeta.map(s => {
             const watched = watchedInSeason(item, s.seasonNumber)
             return (
@@ -171,7 +171,7 @@ function EpisodeModal({
                 onClick={() => setSelected(s.seasonNumber)}
                 className={`flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all ${selected === s.seasonNumber
                   ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-                  : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                  : "border-white/15 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
                   }`}
               >
                 {s.name || `Season ${s.seasonNumber}`}
@@ -221,7 +221,7 @@ function EpisodeModal({
                     key={ep.id ?? ep.episodeNumber}
                     className={`flex items-center gap-3 rounded-2xl border p-3 ${isWatched
                       ? "border-prsPrimary/20 bg-prsPrimary/5"
-                      : "border-white/6 bg-white/2"
+                      : "border-white/15 bg-white/2"
                       }`}
                   >
                     <button
@@ -266,7 +266,7 @@ function EpisodeModal({
                     key={ep}
                     className={`flex items-center gap-3 rounded-2xl border p-3 ${isWatched
                       ? "border-prsPrimary/20 bg-prsPrimary/5"
-                      : "border-white/6 bg-white/2"
+                      : "border-white/15 bg-prsBg/10"
                       }`}
                   >
                     <button
@@ -334,11 +334,11 @@ function TrackedCard({
   const pct = progress.total > 0 ? Math.round((progress.watched / progress.total) * 100) : 0
 
   return (
-    <div className="flex gap-4 rounded-3xl border border-white/6 bg-white/2 p-4 transition-colors hover:border-prsPrimary/25">
+    <div className="flex gap-4 rounded-3xl border border-white/20 bg-white/2 p-4 transition-colors hover:border-prsPrimary/25">
       {/* Poster */}
       <button
         onClick={() => router.push(`/media/${item.mediaType}/${item.tmdbId}`)}
-        className="relative h-40 w-28 shrink-0 overflow-hidden rounded-2xl border border-white/8 bg-white/3 transition-transform hover:scale-[1.02]"
+        className="relative h-40 w-28 shrink-0 overflow-hidden rounded-2xl border border-white/20 bg-white/3 transition-transform hover:scale-[1.02]"
       >
         {item.poster ? (
           <Image src={item.poster} alt={item.title} fill sizes="112px" className="object-cover" />
@@ -412,7 +412,7 @@ function TrackedCard({
               onClick={() => setStatus(s)}
               className={`rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition-all ${item.status === s
                 ? "bg-prsPrimaryDark text-white"
-                : "border border-white/10 text-white/50 hover:border-prsPrimary/40 hover:text-white"
+                : "border border-white/15 text-white/50 hover:border-prsPrimary/40 hover:text-white"
                 }`}
             >
               {STATUS_BADGES[s].label}
@@ -471,11 +471,11 @@ export default function WorkspaceView() {
 
   if (loading || (user && loadingItems)) {
     return (
-      <div className="mx-auto w-full max-w-300 px-4 sm:px-6">
-        <div className="mb-8 h-10 w-64 animate-pulse rounded-xl bg-white/8" />
+      <div className="mx-auto w-full max-w-360 px-4 sm:px-6">
+        <div className="mb-8 h-10 w-64 animate-pulse rounded-xl bg-prsBg/25" />
         <div className="grid gap-4 md:grid-cols-2">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-48 animate-pulse rounded-3xl bg-white/4" />
+            <div key={i} className="h-48 animate-pulse rounded-3xl bg-prsBg/20" />
           ))}
         </div>
       </div>
@@ -493,7 +493,6 @@ export default function WorkspaceView() {
     watched: items.filter(i => i.status === "watched").length,
   }
   const filtered = tab === "all" ? items : items.filter(i => i.status === tab)
-  const firstName = user.name.split(" ")[0]
 
   const handleChange = (updated: TrackedItem) => {
     setItems(prev => {
@@ -513,48 +512,43 @@ export default function WorkspaceView() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-300 px-4 pb-24 sm:px-6">
+    <div className="mx-auto w-full max-w-360 px-4 pb-24 sm:px-6">
       {/* Header */}
       <div className="mb-8 animate-fade-in-up">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-prsPrimary/30 bg-prsPrimary/8 px-3.5 py-1.5 text-xs font-semibold text-prsPrimary">
-          <Sparkles className="size-3.5" />
-          Your personal tracking hub
-        </span>
-        <h1 className="mb-2 text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
-          Workspace
-        </h1>
-        <p className="text-base text-white/50">
-          Watchlist, currently watching, and everything you&rsquo;ve finished — all in one
-          place, {firstName}.
-        </p>
-      </div>
-
-      {/* Tabs */}
-      <div className="mb-8 flex flex-wrap gap-2">
-        {TABS.map(({ value, label, icon: Icon }) => (
-          <button
-            key={value}
-            onClick={() => setTab(value)}
-            className={`flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${tab === value
-              ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-              : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
-              }`}
-          >
-            <Icon className="size-4" />
-            {label}
-            <span
-              className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${tab === value ? "bg-prsPrimaryDark text-white" : "bg-white/6 text-white/40"
-                }`}
-            >
-              {counts[value]}
-            </span>
-          </button>
-        ))}
+        <div className="rounded-3xl border-b border-prsPrimaryDark/18 bg-linear-to-b from-prsBg/0 to-prsBg/15 p-4 sm:p-6">
+          <div className="flex items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
+            <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl shrink-0">
+              Workspace
+            </h1>
+            {/* Tabs */}
+            <div className="flex flex-wrap gap-2 shrink-0">
+              {TABS.map(({ value, label, icon: Icon }) => (
+                <button
+                  key={value}
+                  onClick={() => setTab(value)}
+                  className={`flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-all whitespace-nowrap ${tab === value
+                    ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
+                    : "border-white/15 bg-white/3 text-white/70 hover:border-prsPrimary/30 hover:bg-white/4 hover:text-white"
+                    }`}
+                >
+                  <Icon className="size-4" />
+                  {label}
+                  <span
+                    className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${tab === value ? "bg-prsPrimaryDark text-white" : "bg-white/6 text-white/40"
+                      }`}
+                  >
+                    {counts[value]}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* Empty state */}
       {filtered.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-3xl border border-white/6 bg-white/2 px-6 py-20 text-center">
+        <div className="flex flex-col items-center justify-center rounded-3xl border border-white/20 bg-white/2 px-6 py-20 text-center">
           <div className="mb-4 flex size-16 items-center justify-center rounded-3xl border border-prsPrimary/30 bg-prsPrimary/10">
             {tab === "all" ? (
               <Bookmark className="size-7 text-prsPrimary" />

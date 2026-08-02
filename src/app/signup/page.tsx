@@ -54,7 +54,7 @@ export default function SignupPage() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-prsBg px-4 py-12">
-      <div className="w-full max-w-md rounded-4xl border border-prsPrimary/50 bg-prsPrimary/5 p-8 shadow-[0_0_32px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)] sm:p-10">
+      <div className="w-full max-w-360 rounded-4xl border border-prsPrimary/50 bg-prsPrimary/5 p-8 shadow-[0_0_32px_color-mix(in_srgb,var(--color-prsPrimary)_25%,transparent)] sm:p-10">
         <header className="mb-6 flex justify-center">
           <Link href="/" className="inline-flex opacity-100 transition-opacity hover:opacity-90">
             <Image

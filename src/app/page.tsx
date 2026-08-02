@@ -7,8 +7,8 @@ export default function Home() {
   const { user, loading } = useAuth()
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-16">
-      <div className="mx-auto max-w-2xl text-center">
+    <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-8">
+      <div className="mx-auto max-w-360 text-center">
         <div className="mb-6 inline-flex size-16 items-center justify-center rounded-3xl border border-prsPrimary/40 bg-prsPrimary/10">
           <span className="text-3xl font-bold text-prsPrimary">T</span>
         </div>

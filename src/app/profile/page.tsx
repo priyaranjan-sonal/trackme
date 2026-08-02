@@ -41,7 +41,7 @@ function StatCard({
   accent: string
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-2xl border border-white/6 bg-white/2 p-4 transition-all hover:border-prsPrimary/30 hover:bg-white/4">
+    <div className="flex items-center gap-3 rounded-2xl border border-white/15 bg-prsBg/20 p-4 transition-all hover:border-prsPrimary/30 hover:bg-prsBg/30">
       <span
         className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${accent}`}
       >
@@ -62,9 +62,9 @@ function MediaRow({ item }: { item: TrackedItem }) {
   return (
     <Link
       href={`/media/${item.mediaType}/${item.tmdbId}`}
-      className="group flex items-center gap-3 rounded-2xl border border-white/6 bg-white/2 p-3 transition-all hover:border-prsPrimary/30 hover:bg-white/4"
+      className="group flex items-center gap-3 rounded-2xl border border-white/15 bg-white/2 p-3 transition-all hover:border-prsPrimary/30 hover:bg-white/4"
     >
-      <div className="relative h-16 w-12 shrink-0 overflow-hidden rounded-lg border border-white/8 bg-white/3">
+      <div className="relative h-16 w-12 shrink-0 overflow-hidden rounded-lg border border-white/15 bg-prsBg/30">
         {item.poster ? (
           <Image
             src={item.poster}
@@ -111,7 +111,7 @@ function EmptyList({
   href?: string
 }) {
   return (
-    <div className="flex flex-col items-center justify-center rounded-2xl border border-dashed border-white/8 bg-white/1 px-6 py-10 text-center">
+    <div className="flex flex-col items-center justify-center rounded-2xl border border-white/15 bg-prsBg/20 px-6 py-10 text-center">
       <span className="mb-3 flex size-11 items-center justify-center rounded-xl border border-prsPrimary/25 bg-prsPrimary/10">
         <Icon className="size-5 text-prsPrimary" />
       </span>
@@ -133,20 +133,20 @@ function EmptyList({
 
 function ProfileSkeleton() {
   return (
-    <div className="mx-auto w-full max-w-300 px-4 pt-28 pb-24 sm:px-6">
-      <div className="animate-pulse rounded-3xl border border-white/6 bg-white/2 p-6 sm:p-10">
+    <div className="mx-auto w-full max-w-360 px-4 pt-8 pb-24 sm:px-6">
+      <div className="animate-pulse rounded-3xl border border-white/15 bg-prsBg/15 p-6 sm:p-10">
         <div className="flex items-center gap-6">
-          <div className="size-20 rounded-2xl bg-white/6 sm:size-24" />
+          <div className="size-20 rounded-2xl bg-prsBg/20 sm:size-24" />
           <div className="flex-1 space-y-3">
-            <div className="h-6 w-32 rounded-lg bg-white/6" />
-            <div className="h-8 w-48 rounded-xl bg-white/8" />
-            <div className="h-4 w-64 max-w-full rounded-lg bg-white/5" />
+            <div className="h-6 w-32 rounded-lg bg-prsBg/20" />
+            <div className="h-8 w-48 rounded-xl bg-prsBg/15" />
+            <div className="h-4 w-64 max-w-full rounded-lg bg-prsBg/12" />
           </div>
         </div>
       </div>
       <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-8">
         {Array.from({ length: 8 }).map((_, i) => (
-          <div key={i} className="h-21 animate-pulse rounded-2xl bg-white/3" />
+          <div key={i} className="h-21 animate-pulse rounded-2xl bg-prsBg/15" />
         ))}
       </div>
       <div className="mt-6 grid gap-6 lg:grid-cols-2">
@@ -196,12 +196,12 @@ function EditProfileDialog({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
-      <div className="w-full max-w-md rounded-3xl border border-white/8 bg-prsSurface p-6 shadow-[0_24px_60px_rgba(0,0,0,0.7)] animate-scale-in">
+      <div className="w-full max-w-md rounded-3xl border border-white/15 bg-prsSurface p-6 shadow-[0_24px_60px_rgba(0,0,0,0.7)] animate-scale-in">
         <div className="flex items-center justify-between mb-6">
           <h2 className="text-xl font-bold text-white">Edit Profile</h2>
           <button
             onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-xl text-white/50 hover:bg-white/6 hover:text-white transition-colors"
+            className="flex size-8 items-center justify-center rounded-xl text-white/50 hover:bg-prsBg/30 hover:text-white transition-colors"
             aria-label="Close"
           >
             <Pen className="size-5" />
@@ -349,7 +349,7 @@ export default function ProfilePage() {
         <div className="absolute bottom-[8%] left-[2%] h-75 w-105 rounded-full bg-prsPrimary/4 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto w-full max-w-300 px-4 pt-28 pb-24 sm:px-6">
+      <div className="relative mx-auto w-full max-w-360 px-4 pt-8 pb-24 sm:px-6">
         {/* ── Profile hero ─────────────────────────────────────────── */}
         <section className="relative animate-fade-in-up overflow-hidden rounded-3xl border border-prsPrimary/25 bg-linear-to-br from-prsElevated via-prsSurface to-prsBg shadow-[0_24px_80px_rgba(0,0,0,0.5)]">
           <div className="pointer-events-none absolute -top-24 -right-24 size-80 rounded-full bg-prsPrimary/15 blur-[110px]" />
@@ -450,7 +450,7 @@ export default function ProfilePage() {
         {/* ── Lists ────────────────────────────────────────────────── */}
         <section className="mt-6 grid gap-6 lg:grid-cols-2">
           {/* Recently added */}
-          <div className="rounded-3xl border border-white/6 bg-white/2 p-5">
+          <div className="rounded-3xl border border-white/6 bg-prsSurface p-5">
             <div className="mb-4 flex items-center gap-2.5">
               <span className="flex size-8 items-center justify-center rounded-xl border border-prsPrimary/30 bg-prsPrimary/10">
                 <TrendingUp className="size-4 text-prsPrimary" />
@@ -475,7 +475,7 @@ export default function ProfilePage() {
           </div>
 
           {/* Top rated */}
-          <div className="rounded-3xl border border-white/6 bg-white/2 p-5">
+          <div className="rounded-3xl border border-white/6 bg-prsSurface p-5">
             <div className="mb-4 flex items-center gap-2.5">
               <span className="flex size-8 items-center justify-center rounded-xl border border-prsAccent/30 bg-prsAccent/10">
                 <Award className="size-4 text-prsAccent" />
@@ -502,7 +502,7 @@ export default function ProfilePage() {
 
         {/* ── Genre insights ───────────────────────────────────────── */}
         {genres.length > 0 && (
-          <section className="mt-6 rounded-3xl border border-white/6 bg-white/2 p-5 sm:p-6">
+          <section className="mt-6 rounded-3xl border border-white/15 bg-prsSurface p-5 sm:p-6">
             <div className="mb-5 flex items-center gap-2.5">
               <span className="flex size-8 items-center justify-center rounded-xl border border-prsPrimary/30 bg-prsPrimary/10">
                 <FilmIcon className="size-4 text-prsPrimary" />
@@ -521,7 +521,7 @@ export default function ProfilePage() {
                       {count} {count === 1 ? "title" : "titles"}
                     </span>
                   </div>
-                  <div className="h-2 overflow-hidden rounded-full bg-white/6">
+                  <div className="h-2 overflow-hidden rounded-full bg-prsBg/30">
                     <div
                       className="h-full rounded-full bg-linear-to-r from-prsPrimary to-prsAccent transition-all"
                       style={{

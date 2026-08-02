@@ -113,7 +113,7 @@ function TrailerModal({ video, onClose }: { video: Video | null; onClose: () => 
           </p>
           <button
             onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/15 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
             aria-label="Close"
           >
             <X className="size-4" />
@@ -198,7 +198,7 @@ function EpisodeTracker({
   if (seasons.length === 0) return null
 
   return (
-    <section className="rounded-3xl border border-white/8 bg-white/2 p-5 sm:p-6">
+    <section className="rounded-3xl border border-white/20 bg-prsSurface p-5 sm:p-6">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <span className="flex size-9 items-center justify-center rounded-2xl border border-prsPrimary/30 bg-prsPrimary/10">
@@ -209,7 +209,7 @@ function EpisodeTracker({
           </h3>
         </div>
         {!tracked && (
-          <span className="rounded-full border border-white/10 bg-white/4 px-3 py-1 text-xs text-white/40">
+          <span className="rounded-full border border-white/15 bg-prsBg/40 px-3 py-1 text-xs text-white/40">
             Add to workspace to track episode progress
           </span>
         )}
@@ -226,7 +226,7 @@ function EpisodeTracker({
               onClick={() => setSelected(s.seasonNumber ?? null)}
               className={`flex items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all ${selected === s.seasonNumber
                 ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-                : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                : "border-white/15 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
                 }`}
             >
               {s.name || `Season ${s.seasonNumber}`}
@@ -234,7 +234,7 @@ function EpisodeTracker({
                 <span
                   className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${watched > 0
                     ? "bg-emerald-400/15 text-emerald-300"
-                    : "bg-white/6 text-white/40"
+                    : "bg-white/2 text-white/40"
                     }`}
                 >
                   {watched}/{total}
@@ -284,7 +284,7 @@ function EpisodeTracker({
                   key={ep.id ?? ep.episodeNumber}
                   className={`flex items-center gap-3 rounded-2xl border p-3 transition-colors ${isWatched
                     ? "border-prsPrimary/20 bg-prsPrimary/5"
-                    : "border-white/6 bg-white/2"
+                    : "border-white/15 bg-white/2"
                     }`}
                 >
                   <button
@@ -295,8 +295,8 @@ function EpisodeTracker({
                     className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${isWatched
                       ? "border-prsPrimary bg-prsPrimaryDark text-white"
                       : tracked
-                        ? "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
-                        : "border-white/10 text-transparent opacity-40"
+                        ? "border-white/10 text-white/60 hover:border-prsPrimary hover:text-prsPrimary"
+                        : "border-white/10 text-white/40"
                       }`}
                     aria-label={isWatched ? "Mark unwatched" : "Mark watched"}
                   >
@@ -370,7 +370,7 @@ function PeopleSection({
         {(cast ?? []).slice(0, 8).map((member, i) => (
           <div
             key={i}
-            className="flex items-center gap-3 rounded-2xl border border-white/6 bg-white/3 p-3"
+            className="flex items-center gap-3 rounded-2xl border border-white/15 bg-white/3 p-3"
           >
             <div className="relative size-11 shrink-0 overflow-hidden rounded-full bg-prsPrimary/15">
               {member.person?.profile ? (
@@ -404,7 +404,7 @@ function PeopleSection({
             {members.slice(0, 10).map((member, i) => (
               <span
                 key={i}
-                className="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-[11px] text-white/70"
+                className="rounded-full border border-white/15 bg-white/4 px-3 py-1 text-[11px] text-white/70"
               >
                 {member.person?.name ?? "Unknown"}
               </span>
@@ -512,9 +512,9 @@ export default function MediaDetailPage({
   /* ── Loading ── */
   if (loading) {
     return (
-      <div className="min-h-screen bg-prsBg pt-16">
-        <div className="mx-auto max-w-300 px-4 pt-10 sm:px-6">
-          <div className="h-105 animate-pulse rounded-3xl border border-white/6 bg-white/3" />
+      <div className="min-h-screen bg-prsBg pt-8">
+        <div className="mx-auto max-w-360 px-4 pt-10 sm:px-6">
+          <div className="h-105 animate-pulse rounded-3xl border border-white/10 bg-white/3" />
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
             <div className="h-48 animate-pulse rounded-3xl bg-white/3" />
             <div className="h-48 animate-pulse rounded-3xl bg-white/3" />
@@ -527,7 +527,7 @@ export default function MediaDetailPage({
   /* ── Error / invalid type ── */
   if (!isValidType || error || !media) {
     return (
-      <div className="flex min-h-screen flex-col items-center justify-center bg-prsBg px-4 pt-16">
+      <div className="flex min-h-screen flex-col items-center justify-center bg-prsBg px-4 pt-8">
         <p className="mb-4 text-sm text-white/50">
           {error || "This media type is not supported."}
         </p>
@@ -557,7 +557,7 @@ export default function MediaDetailPage({
 
       {/* Hero */}
       <div className="relative">
-        <div className="relative h-80 sm:h-105">
+        <div className="relative h-72 sm:h-96">
           {backdropUrl ? (
             <Image
               src={backdropUrl}
@@ -575,14 +575,14 @@ export default function MediaDetailPage({
 
           <button
             onClick={() => router.back()}
-            className="absolute top-6 left-4 flex items-center gap-2 rounded-full border border-white/15 bg-prsBg/60 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-colors hover:border-prsPrimary/40 hover:text-white sm:left-8"
+            className="absolute top-4 left-3 flex items-center gap-2 rounded-full border border-white/15 bg-prsBg/60 px-3.5 py-2 text-sm text-white/80 backdrop-blur-sm transition-colors hover:border-prsPrimary/40 hover:text-white sm:left-8"
           >
             <span aria-hidden="true">&larr;</span> Back
           </button>
         </div>
 
         {/* Content */}
-        <div className="relative mx-auto w-full max-w-300 px-4 sm:px-6">
+        <div className="relative mx-auto w-full max-w-360 px-4 sm:px-6">
           <div className="-mt-24 flex flex-col gap-6 sm:-mt-28 sm:flex-row sm:items-end">
             {/* Poster */}
             <div className="relative h-64 w-44 shrink-0 overflow-hidden rounded-2xl border border-prsPrimary/25 bg-white/3 shadow-[0_24px_60px_rgba(0,0,0,0.7)]">
@@ -691,9 +691,9 @@ export default function MediaDetailPage({
       </div>
 
       {/* Body */}
-      <div className="mx-auto mt-10 w-full max-w-300 space-y-10 px-4 sm:px-6">
+      <div className="mx-auto mt-10 w-full max-w-360 space-y-10 px-4 sm:px-6">
         {/* Action bar */}
-        <div className="flex flex-wrap items-center gap-2 rounded-3xl border border-white/8 bg-white/2 p-4">
+        <div className="flex flex-wrap items-center gap-2 rounded-3xl border border-white/15 bg-white/2 p-4">
           {!tracked ? (
             <>
               <button
@@ -813,7 +813,7 @@ export default function MediaDetailPage({
                   onClick={() =>
                     router.push(`/media/${item.mediaType}/${item.ids?.tmdb}`)
                   }
-                  className="group relative aspect-2/3 overflow-hidden rounded-2xl border border-white/6 bg-white/3 transition-all hover:-translate-y-1 hover:border-prsPrimary/40"
+                  className="group relative aspect-2/3 overflow-hidden rounded-2xl border border-white/15 bg-white/3 transition-all hover:-translate-y-1 hover:border-prsPrimary/40"
                 >
                   {item.images?.poster?.medium ? (
                     <Image
@@ -860,7 +860,7 @@ export default function MediaDetailPage({
 
 function StatTile({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/6 bg-white/3 p-4">
+    <div className="rounded-2xl border border-white/15 bg-white/3 p-4">
       <p className="mb-1 text-[10px] uppercase tracking-wider text-white/40">{label}</p>
       <p className="text-sm font-semibold text-white">{value}</p>
     </div>
