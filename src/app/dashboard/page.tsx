@@ -37,19 +37,19 @@ interface Section {
 }
 
 const MOVIE_SECTIONS: Pick<Section, "id" | "label" | "icon" | "endpoint">[] = [
-  { id: "trending",    label: "Trending Now",     icon: Flame,        endpoint: "movies/trending"    },
-  { id: "popular",     label: "Most Popular",      icon: Star,         endpoint: "movies/popular"     },
-  { id: "top_rated",   label: "Top Rated",         icon: Package,      endpoint: "movies/top_rated"   },
-  { id: "upcoming",    label: "Coming Soon",       icon: CalendarClock, endpoint: "movies/upcoming"    },
-  { id: "now_playing", label: "Now Playing",       icon: Eye,          endpoint: "movies/now_playing" },
+  { id: "trending", label: "Trending Now", icon: Flame, endpoint: "movies/trending" },
+  { id: "popular", label: "Most Popular", icon: Star, endpoint: "movies/popular" },
+  { id: "top_rated", label: "Top Rated", icon: Package, endpoint: "movies/top_rated" },
+  { id: "upcoming", label: "Coming Soon", icon: CalendarClock, endpoint: "movies/upcoming" },
+  { id: "now_playing", label: "Now Playing", icon: Eye, endpoint: "movies/now_playing" },
 ]
 
 const TV_SECTIONS: Pick<Section, "id" | "label" | "icon" | "endpoint">[] = [
-  { id: "trending",    label: "Trending Series",  icon: Flame,        endpoint: "tv/trending"     },
-  { id: "popular",     label: "Popular Shows",     icon: Star,         endpoint: "tv/popular"      },
-  { id: "top_rated",   label: "Top Rated Shows",   icon: Package,      endpoint: "tv/top_rated"    },
-  { id: "on_the_air",  label: "On The Air",        icon: Eye,          endpoint: "tv/on_the_air"   },
-  { id: "airing_today", label: "Airing Today",     icon: CalendarClock, endpoint: "tv/airing_today" },
+  { id: "trending", label: "Trending Series", icon: Flame, endpoint: "tv/trending" },
+  { id: "popular", label: "Popular Shows", icon: Star, endpoint: "tv/popular" },
+  { id: "top_rated", label: "Top Rated Shows", icon: Package, endpoint: "tv/top_rated" },
+  { id: "on_the_air", label: "On The Air", icon: Eye, endpoint: "tv/on_the_air" },
+  { id: "airing_today", label: "Airing Today", icon: CalendarClock, endpoint: "tv/airing_today" },
 ]
 
 function makeSections(defs: typeof MOVIE_SECTIONS): Section[] {
@@ -73,26 +73,26 @@ function fmtRuntime(min?: number): string {
 function LoadingSkeleton() {
   return (
     <div className="min-h-screen overflow-hidden bg-prsBg">
-      <div className="mx-auto w-full max-w-[1440px] px-4 pt-28 sm:px-6">
+      <div className="mx-auto w-full max-w-360 px-4 pt-28 sm:px-6">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-xl">
-            <div className="mb-5 h-7 w-40 animate-pulse rounded-full bg-white/[0.06]" />
-            <div className="mb-3 h-10 w-72 animate-pulse rounded-xl bg-white/[0.08]" />
-            <div className="h-4 w-96 max-w-full animate-pulse rounded-lg bg-white/[0.05]" />
+            <div className="mb-5 h-7 w-40 animate-pulse rounded-full bg-white/6" />
+            <div className="mb-3 h-10 w-72 animate-pulse rounded-xl bg-white/8" />
+            <div className="h-4 w-96 max-w-full animate-pulse rounded-lg bg-white/5" />
           </div>
-          <div className="h-12 w-full animate-pulse rounded-xl bg-white/[0.05] lg:w-96" />
+          <div className="h-12 w-full animate-pulse rounded-xl bg-white/5 lg:w-96" />
         </div>
-        <div className="mt-14 h-[420px] animate-pulse rounded-3xl border border-white/[0.06] bg-white/[0.03]" />
+        <div className="mt-14 h-105 animate-pulse rounded-3xl border border-white/6 bg-white/3" />
       </div>
-      <div className="mx-auto mt-14 w-full max-w-[1440px] space-y-10 px-4 pb-24 sm:px-6">
+      <div className="mx-auto mt-14 w-full max-w-360 space-y-10 px-4 pb-24 sm:px-6">
         {[1, 2, 3].map(i => (
           <div key={i}>
-            <div className="mb-5 h-5 w-44 animate-pulse rounded-lg bg-white/[0.06]" />
+            <div className="mb-5 h-5 w-44 animate-pulse rounded-lg bg-white/6" />
             <div className="flex gap-3">
               {Array.from({ length: 8 }).map((_, j) => (
                 <div
                   key={j}
-                  className="h-[230px] w-[154px] shrink-0 animate-pulse rounded-2xl bg-white/[0.05]"
+                  className="h-57.5 w-38.5 shrink-0 animate-pulse rounded-2xl bg-white/5"
                   style={{ animationDelay: `${j * 70}ms` }}
                 />
               ))}
@@ -129,7 +129,7 @@ function CoverHero({
           }
         }
       })
-      .catch(() => {})
+      .catch(() => { })
 
     return () => {
       cancelled = true
@@ -140,8 +140,8 @@ function CoverHero({
   const posterUrl = hero?.images?.poster?.full || hero?.images?.poster?.medium
 
   return (
-    <section className="relative z-40 mx-auto w-full max-w-[1440px] animate-fade-in-up px-4 sm:px-6">
-      <div className="relative h-[70vh] min-h-[520px] max-h-[720px] w-full">
+    <section className="relative z-40 mx-auto w-full max-w-360 animate-fade-in-up px-4 sm:px-6">
+      <div className="relative h-[70vh] min-h-130 max-h-180 w-full">
         {backdropUrl ? (
           <Image
             src={backdropUrl}
@@ -152,15 +152,15 @@ function CoverHero({
             className="object-cover"
           />
         ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-[#312e81] via-[#1e1b4b] to-black" />
+          <div className="absolute inset-0 bg-linear-to-br from-[#312e81] via-[#1e1b4b] to-black" />
         )}
         {/* Text scrim (behind overlaid content) */}
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-black/75 via-black/30 to-transparent" />
+        <div className="pointer-events-none absolute inset-0 bg-linear-to-tr from-black/75 via-black/30 to-transparent" />
         {/* Left / right / bottom fades */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-gradient-to-r from-prsBg to-transparent sm:w-44" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-prsBg to-transparent sm:w-44" />
-        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-gradient-to-t from-prsBg via-prsBg/60 to-transparent sm:h-72" />
-        <div className="pointer-events-none absolute -top-24 -left-24 size-96 rounded-full bg-prsPrimary/[0.14] blur-[130px]" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-24 bg-linear-to-r from-prsBg to-transparent sm:w-44" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-24 bg-linear-to-l from-prsBg to-transparent sm:w-44" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-56 bg-linear-to-t from-prsBg via-prsBg/60 to-transparent sm:h-72" />
+        <div className="pointer-events-none absolute -top-24 -left-24 size-96 rounded-full bg-prsPrimary/14 blur-[130px]" />
 
         <div className="relative flex h-full w-full flex-col justify-end px-5 pb-10 sm:px-10 sm:pb-12">
           {hero ? (
@@ -174,7 +174,7 @@ function CoverHero({
               </div>
 
               {posterUrl && (
-                <div className="relative mb-4 h-44 w-32 shrink-0 overflow-hidden rounded-xl border border-white/[0.12] bg-white/[0.03] shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
+                <div className="relative mb-4 h-44 w-32 shrink-0 overflow-hidden rounded-xl border border-white/12 bg-white/3 shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
                   <Image
                     src={posterUrl}
                     alt={hero?.title ?? "Poster"}
@@ -245,11 +245,11 @@ function CoverHero({
             </>
           ) : (
             <div className="max-w-xl">
-              <div className="mb-3 h-6 w-24 animate-pulse rounded-lg bg-white/[0.08]" />
-              <div className="mb-3 h-12 w-80 max-w-full animate-pulse rounded-xl bg-white/[0.08]" />
-              <div className="mb-3 h-4 w-52 animate-pulse rounded-lg bg-white/[0.05]" />
-              <div className="mb-5 h-14 w-full max-w-md animate-pulse rounded-xl bg-white/[0.05]" />
-              <div className="h-11 w-32 animate-pulse rounded-2xl bg-white/[0.08]" />
+              <div className="mb-3 h-6 w-24 animate-pulse rounded-lg bg-white/8" />
+              <div className="mb-3 h-12 w-80 max-w-full animate-pulse rounded-xl bg-white/8" />
+              <div className="mb-3 h-4 w-52 animate-pulse rounded-lg bg-white/5" />
+              <div className="mb-5 h-14 w-full max-w-md animate-pulse rounded-xl bg-white/5" />
+              <div className="h-11 w-32 animate-pulse rounded-2xl bg-white/8" />
             </div>
           )}
         </div>
@@ -310,7 +310,7 @@ function BrowseSections({
   return (
     <>
       {/* Category rows */}
-      <div className="mx-auto mt-14 w-full max-w-[1440px] space-y-12 px-4 pb-28 sm:px-6">
+      <div className="mx-auto mt-14 w-full max-w-360 space-y-12 px-4 pb-28 sm:px-6">
         {sections.map(s => (
           <CategoryRow
             key={s.id}
@@ -392,26 +392,26 @@ export default function DashboardPage() {
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-prsBg">
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-prsPrimary/[0.06] blur-[140px]" />
-        <div className="absolute top-[45%] right-[6%] h-[360px] w-[520px] rounded-full bg-prsAccent/[0.04] blur-[120px]" />
-        <div className="absolute bottom-[10%] left-[2%] h-[300px] w-[420px] rounded-full bg-prsPrimary/[0.04] blur-[120px]" />
+        <div className="absolute -top-32 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-prsPrimary/6 blur-[140px]" />
+        <div className="absolute top-[45%] right-[6%] h-90 w-130 rounded-full bg-prsAccent/4 blur-[120px]" />
+        <div className="absolute bottom-[10%] left-[2%] h-75 w-105 rounded-full bg-prsPrimary/4 blur-[120px]" />
       </div>
 
-<div className="relative">
+      <div className="relative">
         {/* Cover hero (full-bleed page cover) */}
         <CoverHero key={`cover-${mediaType}`} mediaType={mediaType} onOpen={openMedia} />
 
         {/* Header */}
-        <div className="mx-auto mt-10 w-full max-w-[1440px] px-4 sm:px-6">
+        <div className="mx-auto mt-10 w-full max-w-360 px-4 sm:px-6">
           <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-xl animate-fade-in-up">
-              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-prsPrimary/30 bg-prsPrimary/[0.08] px-3.5 py-1.5 text-xs font-semibold text-prsPrimary">
+              <span className="mb-5 inline-flex items-center gap-2 rounded-full border border-prsPrimary/30 bg-prsPrimary/8 px-3.5 py-1.5 text-xs font-semibold text-prsPrimary">
                 <Sparkles className="size-3.5" />
                 Browse & Discover
               </span>
               <h1 className="mb-3 text-3xl font-extrabold tracking-tight text-white sm:text-4xl lg:text-5xl">
                 {greeting},{" "}
-                <span className="bg-gradient-to-r from-prsPrimary via-violet-300 to-prsAccent bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-prsPrimary via-violet-300 to-prsAccent bg-clip-text text-transparent">
                   {firstName}
                 </span>
               </h1>
@@ -421,16 +421,15 @@ export default function DashboardPage() {
               </p>
             </div>
 
-            <div className="flex shrink-0 animate-fade-in-up items-center gap-1 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-1">
+            <div className="flex shrink-0 animate-fade-in-up items-center gap-1 rounded-2xl border border-white/8 bg-white/3 p-1">
               {(["movie", "tv"] as MediaType[]).map(t => (
                 <button
                   key={t}
                   onClick={() => setMediaType(t)}
-                  className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all ${
-                    mediaType === t
-                      ? "bg-prsPrimaryDark text-white"
-                      : "text-white/50 hover:text-white"
-                  }`}
+                  className={`flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold transition-all ${mediaType === t
+                    ? "bg-prsPrimaryDark text-white"
+                    : "text-white/50 hover:text-white"
+                    }`}
                 >
                   {t === "movie" ? (
                     <Film className="size-4" />

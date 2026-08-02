@@ -47,7 +47,7 @@ export default function LoginPage() {
           <Link href="/" className="inline-flex opacity-100 transition-opacity hover:opacity-90">
             <Image
               src="/logo.png"
-              alt="MovieTrack"
+              alt="TrackMe"
               width={163}
               height={48}
               className="h-7 w-auto sm:h-9"

@@ -128,6 +128,7 @@ export async function POST(request: NextRequest) {
       if (typeof backdrop === "string") existing.backdrop = backdrop
       if (Array.isArray(genres)) existing.genres = genres
       if (Array.isArray(seasonsMeta)) existing.seasonsMeta = seasonsMeta
+      if (typeof body.rating === "number") existing.rating = body.rating
       await existing.save()
       return NextResponse.json({
         success: true,

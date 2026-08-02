@@ -10,11 +10,11 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center justify-center px-4 pt-16">
       <div className="mx-auto max-w-2xl text-center">
         <div className="mb-6 inline-flex size-16 items-center justify-center rounded-3xl border border-prsPrimary/40 bg-prsPrimary/10">
-          <span className="text-3xl font-bold text-prsPrimary">M</span>
+          <span className="text-3xl font-bold text-prsPrimary">T</span>
         </div>
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-white sm:text-5xl">
           Welcome to{" "}
-          <span className="text-prsPrimary">MovieTrack</span>
+          <span className="text-prsPrimary">TrackMe</span>
         </h1>
         <p className="mb-8 text-lg text-white/50">
           Discover movies and TV shows, build your watchlist, track episodes, and

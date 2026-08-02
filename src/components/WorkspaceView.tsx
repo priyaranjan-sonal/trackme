@@ -144,7 +144,7 @@ function EpisodeModal({
         className="relative flex max-h-[88vh] w-full max-w-2xl flex-col overflow-hidden rounded-3xl border border-prsPrimary/25 bg-prsSurface shadow-[0_32px_80px_rgba(0,0,0,0.9)] animate-scale-in"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center gap-3 border-b border-white/[0.06] px-5 py-4">
+        <div className="flex items-center gap-3 border-b border-white/6 px-5 py-4">
           <span className="flex size-9 items-center justify-center rounded-2xl border border-prsPrimary/30 bg-prsPrimary/10">
             <Layers className="size-4 text-prsPrimary" />
           </span>
@@ -154,7 +154,7 @@ function EpisodeModal({
           </div>
           <button
             onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-full border border-white/[0.1] text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
             aria-label="Close"
           >
             <X className="size-4" />
@@ -162,27 +162,25 @@ function EpisodeModal({
         </div>
 
         {/* Season selector */}
-        <div className="flex flex-wrap gap-2 border-b border-white/[0.06] px-5 py-3">
+        <div className="flex flex-wrap gap-2 border-b border-white/6 px-5 py-3">
           {seasonsMeta.map(s => {
             const watched = watchedInSeason(item, s.seasonNumber)
             return (
               <button
                 key={s.seasonNumber}
                 onClick={() => setSelected(s.seasonNumber)}
-                className={`flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all ${
-                  selected === s.seasonNumber
-                    ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-                    : "border-white/[0.08] bg-white/[0.03] text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
-                }`}
+                className={`flex items-center gap-2 rounded-xl border px-3 py-1.5 text-xs font-semibold transition-all ${selected === s.seasonNumber
+                  ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
+                  : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                  }`}
               >
                 {s.name || `Season ${s.seasonNumber}`}
                 {s.episodeCount > 0 && (
                   <span
-                    className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${
-                      watched > 0
-                        ? "bg-emerald-400/15 text-emerald-300"
-                        : "bg-white/[0.06] text-white/40"
-                    }`}
+                    className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${watched > 0
+                      ? "bg-emerald-400/15 text-emerald-300"
+                      : "bg-white/6 text-white/40"
+                      }`}
                   >
                     {watched}/{s.episodeCount}
                   </span>
@@ -221,28 +219,25 @@ function EpisodeModal({
                 return (
                   <div
                     key={ep.id ?? ep.episodeNumber}
-                    className={`flex items-center gap-3 rounded-2xl border p-3 ${
-                      isWatched
-                        ? "border-prsPrimary/20 bg-prsPrimary/[0.05]"
-                        : "border-white/[0.06] bg-white/[0.02]"
-                    }`}
+                    className={`flex items-center gap-3 rounded-2xl border p-3 ${isWatched
+                      ? "border-prsPrimary/20 bg-prsPrimary/5"
+                      : "border-white/6 bg-white/2"
+                      }`}
                   >
                     <button
                       onClick={() => toggle(ep.episodeNumber as number)}
-                      className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${
-                        isWatched
-                          ? "border-prsPrimary bg-prsPrimaryDark text-white"
-                          : "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
-                      }`}
+                      className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${isWatched
+                        ? "border-prsPrimary bg-prsPrimaryDark text-white"
+                        : "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
+                        }`}
                       aria-label={isWatched ? "Mark unwatched" : "Mark watched"}
                     >
                       <Check className="size-3.5" />
                     </button>
                     <div className="min-w-0 flex-1">
                       <p
-                        className={`truncate text-sm font-medium ${
-                          isWatched ? "text-white/50 line-through" : "text-white"
-                        }`}
+                        className={`truncate text-sm font-medium ${isWatched ? "text-white/50 line-through" : "text-white"
+                          }`}
                       >
                         {ep.episodeNumber}. {ep.name || `Episode ${ep.episodeNumber}`}
                       </p>
@@ -269,27 +264,24 @@ function EpisodeModal({
                 return (
                   <div
                     key={ep}
-                    className={`flex items-center gap-3 rounded-2xl border p-3 ${
-                      isWatched
-                        ? "border-prsPrimary/20 bg-prsPrimary/[0.05]"
-                        : "border-white/[0.06] bg-white/[0.02]"
-                    }`}
+                    className={`flex items-center gap-3 rounded-2xl border p-3 ${isWatched
+                      ? "border-prsPrimary/20 bg-prsPrimary/5"
+                      : "border-white/6 bg-white/2"
+                      }`}
                   >
                     <button
                       onClick={() => toggle(ep)}
-                      className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${
-                        isWatched
-                          ? "border-prsPrimary bg-prsPrimaryDark text-white"
-                          : "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
-                      }`}
+                      className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${isWatched
+                        ? "border-prsPrimary bg-prsPrimaryDark text-white"
+                        : "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
+                        }`}
                       aria-label={isWatched ? "Mark unwatched" : "Mark watched"}
                     >
                       <Check className="size-3.5" />
                     </button>
                     <p
-                      className={`text-sm font-medium ${
-                        isWatched ? "text-white/50 line-through" : "text-white"
-                      }`}
+                      className={`text-sm font-medium ${isWatched ? "text-white/50 line-through" : "text-white"
+                        }`}
                     >
                       Episode {ep}
                     </p>
@@ -342,11 +334,11 @@ function TrackedCard({
   const pct = progress.total > 0 ? Math.round((progress.watched / progress.total) * 100) : 0
 
   return (
-    <div className="flex gap-4 rounded-3xl border border-white/[0.06] bg-white/[0.02] p-4 transition-colors hover:border-prsPrimary/25">
+    <div className="flex gap-4 rounded-3xl border border-white/6 bg-white/2 p-4 transition-colors hover:border-prsPrimary/25">
       {/* Poster */}
       <button
         onClick={() => router.push(`/media/${item.mediaType}/${item.tmdbId}`)}
-        className="relative h-40 w-28 shrink-0 overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition-transform hover:scale-[1.02]"
+        className="relative h-40 w-28 shrink-0 overflow-hidden rounded-2xl border border-white/8 bg-white/3 transition-transform hover:scale-[1.02]"
       >
         {item.poster ? (
           <Image src={item.poster} alt={item.title} fill sizes="112px" className="object-cover" />
@@ -387,9 +379,9 @@ function TrackedCard({
               </span>
               <span className="text-prsPrimary">{pct}%</span>
             </div>
-            <div className="h-1.5 overflow-hidden rounded-full bg-white/[0.06]">
+            <div className="h-1.5 overflow-hidden rounded-full bg-white/6">
               <div
-                className="h-full rounded-full bg-gradient-to-r from-prsPrimary to-prsAccent transition-all"
+                className="h-full rounded-full bg-linear-to-r from-prsPrimary to-prsAccent transition-all"
                 style={{ width: `${pct}%` }}
               />
             </div>
@@ -418,11 +410,10 @@ function TrackedCard({
             <button
               key={s}
               onClick={() => setStatus(s)}
-              className={`rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition-all ${
-                item.status === s
-                  ? "bg-prsPrimaryDark text-white"
-                  : "border border-white/[0.1] text-white/50 hover:border-prsPrimary/40 hover:text-white"
-              }`}
+              className={`rounded-lg px-2.5 py-1.5 text-[11px] font-semibold transition-all ${item.status === s
+                ? "bg-prsPrimaryDark text-white"
+                : "border border-white/10 text-white/50 hover:border-prsPrimary/40 hover:text-white"
+                }`}
             >
               {STATUS_BADGES[s].label}
             </button>
@@ -473,11 +464,11 @@ export default function WorkspaceView() {
 
   if (loading || (user && loadingItems)) {
     return (
-      <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6">
-        <div className="mb-8 h-10 w-64 animate-pulse rounded-xl bg-white/[0.08]" />
+      <div className="mx-auto w-full max-w-300 px-4 sm:px-6">
+        <div className="mb-8 h-10 w-64 animate-pulse rounded-xl bg-white/8" />
         <div className="grid gap-4 md:grid-cols-2">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-48 animate-pulse rounded-3xl bg-white/[0.04]" />
+            <div key={i} className="h-48 animate-pulse rounded-3xl bg-white/4" />
           ))}
         </div>
       </div>
@@ -486,7 +477,7 @@ export default function WorkspaceView() {
 
   if (!user) {
     return (
-      <div className="mx-auto w-full max-w-[1200px] px-4 text-center sm:px-6">
+      <div className="mx-auto w-full max-w-300 px-4 text-center sm:px-6">
         <p className="mb-4 text-white/50">You need to be logged in.</p>
         <Link
           href="/login"
@@ -525,10 +516,10 @@ export default function WorkspaceView() {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1200px] px-4 pb-24 sm:px-6">
+    <div className="mx-auto w-full max-w-300 px-4 pb-24 sm:px-6">
       {/* Header */}
       <div className="mb-8 animate-fade-in-up">
-        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-prsPrimary/30 bg-prsPrimary/[0.08] px-3.5 py-1.5 text-xs font-semibold text-prsPrimary">
+        <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-prsPrimary/30 bg-prsPrimary/8 px-3.5 py-1.5 text-xs font-semibold text-prsPrimary">
           <Sparkles className="size-3.5" />
           Your personal tracking hub
         </span>
@@ -547,18 +538,16 @@ export default function WorkspaceView() {
           <button
             key={value}
             onClick={() => setTab(value)}
-            className={`flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${
-              tab === value
-                ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-                : "border-white/[0.08] bg-white/[0.03] text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
-            }`}
+            className={`flex items-center gap-2 rounded-2xl border px-4 py-2 text-sm font-semibold transition-all ${tab === value
+              ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
+              : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+              }`}
           >
             <Icon className="size-4" />
             {label}
             <span
-              className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${
-                tab === value ? "bg-prsPrimaryDark text-white" : "bg-white/[0.06] text-white/40"
-              }`}
+              className={`rounded-full px-2 py-0.5 text-[10px] font-bold ${tab === value ? "bg-prsPrimaryDark text-white" : "bg-white/6 text-white/40"
+                }`}
             >
               {counts[value]}
             </span>
@@ -568,7 +557,7 @@ export default function WorkspaceView() {
 
       {/* Empty state */}
       {filtered.length === 0 ? (
-        <div className="flex flex-col items-center justify-center rounded-3xl border border-white/[0.06] bg-white/[0.02] px-6 py-20 text-center">
+        <div className="flex flex-col items-center justify-center rounded-3xl border border-white/6 bg-white/2 px-6 py-20 text-center">
           <div className="mb-4 flex size-16 items-center justify-center rounded-3xl border border-prsPrimary/30 bg-prsPrimary/10">
             {tab === "all" ? (
               <Bookmark className="size-7 text-prsPrimary" />

@@ -107,13 +107,13 @@ function TrailerModal({ video, onClose }: { video: Video | null; onClose: () => 
         className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-prsPrimary/25 bg-prsSurface shadow-[0_32px_80px_rgba(0,0,0,0.9)] animate-scale-in"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between border-b border-white/[0.06] px-5 py-3">
+        <div className="flex items-center justify-between border-b border-white/6 px-5 py-3">
           <p className="text-sm font-semibold text-white">
             {video.name || "Trailer"}
           </p>
           <button
             onClick={onClose}
-            className="flex size-8 items-center justify-center rounded-full border border-white/[0.1] text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+            className="flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
             aria-label="Close"
           >
             <X className="size-4" />
@@ -198,7 +198,7 @@ function EpisodeTracker({
   if (seasons.length === 0) return null
 
   return (
-    <section className="rounded-3xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6">
+    <section className="rounded-3xl border border-white/8 bg-white/2 p-5 sm:p-6">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <div className="flex items-center gap-3">
           <span className="flex size-9 items-center justify-center rounded-2xl border border-prsPrimary/30 bg-prsPrimary/10">
@@ -209,7 +209,7 @@ function EpisodeTracker({
           </h3>
         </div>
         {!tracked && (
-          <span className="rounded-full border border-white/[0.1] bg-white/[0.04] px-3 py-1 text-xs text-white/40">
+          <span className="rounded-full border border-white/10 bg-white/4 px-3 py-1 text-xs text-white/40">
             Add to workspace to track episode progress
           </span>
         )}
@@ -224,20 +224,18 @@ function EpisodeTracker({
             <button
               key={s.seasonNumber}
               onClick={() => setSelected(s.seasonNumber ?? null)}
-              className={`flex items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all ${
-                selected === s.seasonNumber
-                  ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
-                  : "border-white/[0.08] bg-white/[0.03] text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
-              }`}
+              className={`flex items-center gap-2 rounded-xl border px-3.5 py-2 text-xs font-semibold transition-all ${selected === s.seasonNumber
+                ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary"
+                : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                }`}
             >
               {s.name || `Season ${s.seasonNumber}`}
               {total > 0 && (
                 <span
-                  className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${
-                    watched > 0
-                      ? "bg-emerald-400/15 text-emerald-300"
-                      : "bg-white/[0.06] text-white/40"
-                  }`}
+                  className={`rounded-full px-1.5 py-0.5 text-[9px] font-bold ${watched > 0
+                    ? "bg-emerald-400/15 text-emerald-300"
+                    : "bg-white/6 text-white/40"
+                    }`}
                 >
                   {watched}/{total}
                 </span>
@@ -284,31 +282,29 @@ function EpisodeTracker({
               return (
                 <div
                   key={ep.id ?? ep.episodeNumber}
-                  className={`flex items-center gap-3 rounded-2xl border p-3 transition-colors ${
-                    isWatched
-                      ? "border-prsPrimary/20 bg-prsPrimary/[0.05]"
-                      : "border-white/[0.06] bg-white/[0.02]"
-                  }`}
+                  className={`flex items-center gap-3 rounded-2xl border p-3 transition-colors ${isWatched
+                    ? "border-prsPrimary/20 bg-prsPrimary/5"
+                    : "border-white/6 bg-white/2"
+                    }`}
                 >
                   <button
                     disabled={!tracked}
                     onClick={() =>
                       toggleEpisode(selected as number, ep.episodeNumber as number)
                     }
-                    className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${
-                      isWatched
-                        ? "border-prsPrimary bg-prsPrimaryDark text-white"
-                        : tracked
-                          ? "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
-                          : "border-white/10 text-transparent opacity-40"
-                    }`}
+                    className={`flex size-6 shrink-0 items-center justify-center rounded-full border transition-all ${isWatched
+                      ? "border-prsPrimary bg-prsPrimaryDark text-white"
+                      : tracked
+                        ? "border-white/25 text-transparent hover:border-prsPrimary hover:text-prsPrimary"
+                        : "border-white/10 text-transparent opacity-40"
+                      }`}
                     aria-label={isWatched ? "Mark unwatched" : "Mark watched"}
                   >
                     <Check className="size-3.5" />
                   </button>
                   <div className="flex min-w-0 flex-1 items-center gap-3">
                     {ep.still ? (
-                      <div className="relative h-10 w-16 shrink-0 overflow-hidden rounded-md bg-white/[0.04]">
+                      <div className="relative h-10 w-16 shrink-0 overflow-hidden rounded-md bg-white/4">
                         <Image
                           src={ep.still}
                           alt=""
@@ -318,15 +314,14 @@ function EpisodeTracker({
                         />
                       </div>
                     ) : (
-                      <div className="flex h-10 w-16 shrink-0 items-center justify-center rounded-md bg-white/[0.04] text-white/20">
+                      <div className="flex h-10 w-16 shrink-0 items-center justify-center rounded-md bg-white/4 text-white/20">
                         <Play className="size-4" />
                       </div>
                     )}
                     <div className="min-w-0">
                       <p
-                        className={`truncate text-sm font-medium ${
-                          isWatched ? "text-white/50 line-through" : "text-white"
-                        }`}
+                        className={`truncate text-sm font-medium ${isWatched ? "text-white/50 line-through" : "text-white"
+                          }`}
                       >
                         {ep.episodeNumber}. {ep.name || `Episode ${ep.episodeNumber}`}
                       </p>
@@ -375,7 +370,7 @@ function PeopleSection({
         {(cast ?? []).slice(0, 8).map((member, i) => (
           <div
             key={i}
-            className="flex items-center gap-3 rounded-2xl border border-white/[0.06] bg-white/[0.03] p-3"
+            className="flex items-center gap-3 rounded-2xl border border-white/6 bg-white/3 p-3"
           >
             <div className="relative size-11 shrink-0 overflow-hidden rounded-full bg-prsPrimary/15">
               {member.person?.profile ? (
@@ -409,7 +404,7 @@ function PeopleSection({
             {members.slice(0, 10).map((member, i) => (
               <span
                 key={i}
-                className="rounded-full border border-white/[0.06] bg-white/[0.04] px-3 py-1 text-[11px] text-white/70"
+                className="rounded-full border border-white/6 bg-white/4 px-3 py-1 text-[11px] text-white/70"
               >
                 {member.person?.name ?? "Unknown"}
               </span>
@@ -454,7 +449,7 @@ export default function MediaDetailPage({
       .then(item => {
         if (!cancelled) setTracked(item)
       })
-      .catch(() => {})
+      .catch(() => { })
     return () => {
       cancelled = true
     }
@@ -518,11 +513,11 @@ export default function MediaDetailPage({
   if (loading) {
     return (
       <div className="min-h-screen bg-prsBg pt-16">
-        <div className="mx-auto max-w-[1200px] px-4 pt-10 sm:px-6">
-          <div className="h-[420px] animate-pulse rounded-3xl border border-white/[0.06] bg-white/[0.03]" />
+        <div className="mx-auto max-w-300 px-4 pt-10 sm:px-6">
+          <div className="h-105 animate-pulse rounded-3xl border border-white/6 bg-white/3" />
           <div className="mt-8 grid gap-8 lg:grid-cols-2">
-            <div className="h-48 animate-pulse rounded-3xl bg-white/[0.03]" />
-            <div className="h-48 animate-pulse rounded-3xl bg-white/[0.03]" />
+            <div className="h-48 animate-pulse rounded-3xl bg-white/3" />
+            <div className="h-48 animate-pulse rounded-3xl bg-white/3" />
           </div>
         </div>
       </div>
@@ -557,12 +552,12 @@ export default function MediaDetailPage({
     <div className="relative min-h-screen overflow-x-hidden bg-prsBg pb-20">
       {/* Ambient glow */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -top-32 left-1/2 h-[480px] w-[720px] -translate-x-1/2 rounded-full bg-prsPrimary/[0.06] blur-[140px]" />
+        <div className="absolute -top-32 left-1/2 h-120 w-180 -translate-x-1/2 rounded-full bg-prsPrimary/6 blur-[140px]" />
       </div>
 
       {/* Hero */}
       <div className="relative">
-        <div className="relative h-[320px] sm:h-[420px]">
+        <div className="relative h-80 sm:h-105">
           {backdropUrl ? (
             <Image
               src={backdropUrl}
@@ -580,17 +575,17 @@ export default function MediaDetailPage({
 
           <button
             onClick={() => router.back()}
-            className="absolute top-6 left-4 flex items-center gap-2 rounded-full border border-white/[0.15] bg-prsBg/60 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-colors hover:border-prsPrimary/40 hover:text-white sm:left-8"
+            className="absolute top-6 left-4 flex items-center gap-2 rounded-full border border-white/15 bg-prsBg/60 px-4 py-2 text-sm text-white/80 backdrop-blur-sm transition-colors hover:border-prsPrimary/40 hover:text-white sm:left-8"
           >
             <span aria-hidden="true">&larr;</span> Back
           </button>
         </div>
 
         {/* Content */}
-        <div className="relative mx-auto w-full max-w-[1200px] px-4 sm:px-6">
+        <div className="relative mx-auto w-full max-w-300 px-4 sm:px-6">
           <div className="-mt-24 flex flex-col gap-6 sm:-mt-28 sm:flex-row sm:items-end">
             {/* Poster */}
-            <div className="relative h-64 w-44 shrink-0 overflow-hidden rounded-2xl border border-prsPrimary/25 bg-white/[0.03] shadow-[0_24px_60px_rgba(0,0,0,0.7)]">
+            <div className="relative h-64 w-44 shrink-0 overflow-hidden rounded-2xl border border-prsPrimary/25 bg-white/3 shadow-[0_24px_60px_rgba(0,0,0,0.7)]">
               {posterUrl ? (
                 <Image src={posterUrl} alt={media.title ?? ""} fill sizes="176px" className="object-cover" />
               ) : (
@@ -614,7 +609,7 @@ export default function MediaDetailPage({
                 {trailers.length > 0 && (
                   <button
                     onClick={() => setTrailer(trailers[0])}
-                    className="flex items-center gap-1.5 rounded-full border border-white/[0.15] bg-white/[0.05] px-2.5 py-0.5 text-[10px] font-semibold text-white/80 transition-colors hover:border-prsPrimary/40 hover:text-prsPrimary"
+                    className="flex items-center gap-1.5 rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 text-[10px] font-semibold text-white/80 transition-colors hover:border-prsPrimary/40 hover:text-prsPrimary"
                   >
                     <Play className="size-3 fill-current" /> Trailer
                   </button>
@@ -696,9 +691,9 @@ export default function MediaDetailPage({
       </div>
 
       {/* Body */}
-      <div className="mx-auto mt-10 w-full max-w-[1200px] space-y-10 px-4 sm:px-6">
+      <div className="mx-auto mt-10 w-full max-w-300 space-y-10 px-4 sm:px-6">
         {/* Action bar */}
-        <div className="flex flex-wrap items-center gap-2 rounded-3xl border border-white/[0.08] bg-white/[0.02] p-4">
+        <div className="flex flex-wrap items-center gap-2 rounded-3xl border border-white/8 bg-white/2 p-4">
           {!tracked ? (
             <>
               <button
@@ -731,17 +726,16 @@ export default function MediaDetailPage({
                   <button
                     key={s}
                     onClick={() => changeStatus(s)}
-                    className={`rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all ${
-                      tracked.status === s
-                        ? "bg-prsPrimaryDark text-white"
-                        : "border border-white/[0.1] text-white/50 hover:border-prsPrimary/40 hover:text-white"
-                    }`}
+                    className={`rounded-xl px-3.5 py-1.5 text-xs font-semibold transition-all ${tracked.status === s
+                      ? "bg-prsPrimaryDark text-white"
+                      : "border border-white/10 text-white/50 hover:border-prsPrimary/40 hover:text-white"
+                      }`}
                   >
                     {STATUS_BADGES[s].label}
                   </button>
                 ))}
               </div>
-              <div className="mx-2 hidden h-8 w-px bg-white/[0.08] sm:block" />
+              <div className="mx-2 hidden h-8 w-px bg-white/8 sm:block" />
               <div className="flex items-center gap-2">
                 <span className="text-sm text-white/40">Your rating:</span>
                 <RatingStars value={tracked.rating} onChange={rate} />
@@ -779,30 +773,30 @@ export default function MediaDetailPage({
         {(isTv
           ? tvMedia?.numberOfSeasons != null || tvMedia?.numberOfEpisodes != null
           : movieMedia?.budget != null) && (
-          <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
-            {isTv ? (
-              <>
-                <StatTile label="Seasons" value={String(tvMedia?.numberOfSeasons ?? "—")} />
-                <StatTile label="Episodes" value={String(tvMedia?.numberOfEpisodes ?? "—")} />
-                <StatTile label="Status" value={media.status ?? "—"} />
-                <StatTile
-                  label="Last aired"
-                  value={tvMedia?.lastAirDate?.split("-")[0] ?? "—"}
-                />
-              </>
-            ) : (
-              <>
-                <StatTile
-                  label="Runtime"
-                  value={fmtRuntime(movieMedia?.runtime) || "—"}
-                />
-                <StatTile label="Budget" value={fmtMoney(movieMedia?.budget)} />
-                <StatTile label="Revenue" value={fmtMoney(movieMedia?.revenue)} />
-                <StatTile label="Status" value={media.status ?? "—"} />
-              </>
-            )}
-          </section>
-        )}
+            <section className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+              {isTv ? (
+                <>
+                  <StatTile label="Seasons" value={String(tvMedia?.numberOfSeasons ?? "—")} />
+                  <StatTile label="Episodes" value={String(tvMedia?.numberOfEpisodes ?? "—")} />
+                  <StatTile label="Status" value={media.status ?? "—"} />
+                  <StatTile
+                    label="Last aired"
+                    value={tvMedia?.lastAirDate?.split("-")[0] ?? "—"}
+                  />
+                </>
+              ) : (
+                <>
+                  <StatTile
+                    label="Runtime"
+                    value={fmtRuntime(movieMedia?.runtime) || "—"}
+                  />
+                  <StatTile label="Budget" value={fmtMoney(movieMedia?.budget)} />
+                  <StatTile label="Revenue" value={fmtMoney(movieMedia?.revenue)} />
+                  <StatTile label="Status" value={media.status ?? "—"} />
+                </>
+              )}
+            </section>
+          )}
 
         {/* Similar */}
         {media.similar && media.similar.length > 0 && (
@@ -819,7 +813,7 @@ export default function MediaDetailPage({
                   onClick={() =>
                     router.push(`/media/${item.mediaType}/${item.ids?.tmdb}`)
                   }
-                  className="group relative aspect-[2/3] overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.03] transition-all hover:-translate-y-1 hover:border-prsPrimary/40"
+                  className="group relative aspect-2/3 overflow-hidden rounded-2xl border border-white/6 bg-white/3 transition-all hover:-translate-y-1 hover:border-prsPrimary/40"
                 >
                   {item.images?.poster?.medium ? (
                     <Image
@@ -866,7 +860,7 @@ export default function MediaDetailPage({
 
 function StatTile({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-2xl border border-white/[0.06] bg-white/[0.03] p-4">
+    <div className="rounded-2xl border border-white/6 bg-white/3 p-4">
       <p className="mb-1 text-[10px] uppercase tracking-wider text-white/40">{label}</p>
       <p className="text-sm font-semibold text-white">{value}</p>
     </div>

@@ -58,7 +58,7 @@ export default function MediaCard({
     <div className="group relative shrink-0">
       <button
         onClick={() => onOpen(item)}
-        className="relative block h-[230px] w-[154px] overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] text-left transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:scale-[1.04] hover:border-prsPrimary/40 hover:shadow-[0_16px_48px_rgba(0,0,0,0.8),0_0_24px_rgba(99,102,241,0.15)] focus:outline-none focus:ring-2 focus:ring-prsPrimary/60 animate-fade-in-up"
+        className="relative block h-57.5 w-38.5 overflow-hidden rounded-2xl border border-white/8 bg-white/3 text-left transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:scale-[1.04] hover:border-prsPrimary/40 hover:shadow-[0_16px_48px_rgba(0,0,0,0.8),0_0_24px_rgba(99,102,241,0.15)] focus:outline-none focus:ring-2 focus:ring-prsPrimary/60 animate-fade-in-up"
         style={{ animationDelay: `${index * 45}ms` }}
       >
         {/* Poster or gradient fallback */}
@@ -75,9 +75,8 @@ export default function MediaCard({
               alt={item.title ?? "Media poster"}
               fill
               sizes="154px"
-              className={`object-cover transition-all duration-500 group-hover:scale-105 ${
-                imgLoaded ? "opacity-100" : "opacity-0"
-              }`}
+              className={`object-cover transition-all duration-500 group-hover:scale-105 ${imgLoaded ? "opacity-100" : "opacity-0"
+                }`}
               onLoad={() => setImgLoaded(true)}
               onError={() => setImgError(true)}
             />
@@ -102,7 +101,7 @@ export default function MediaCard({
         )}
 
         {/* Media type badge */}
-        <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full border border-white/[0.12] bg-prsBg/70 px-1.5 py-0.5 backdrop-blur-sm">
+        <div className="absolute top-2 right-2 flex items-center gap-1 rounded-full border border-white/12 bg-prsBg/70 px-1.5 py-0.5 backdrop-blur-sm">
           {isTv ? (
             <Tv className="size-2.5 text-prsAccent" />
           ) : (
@@ -166,11 +165,10 @@ export default function MediaCard({
               ? `In workspace (${tracked})`
               : "Add to workspace"
           }
-          className={`absolute -bottom-2 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border shadow-lg transition-all hover:scale-110 ${
-            isTracked
-              ? "border-prsPrimary/60 bg-prsPrimaryDark text-white"
-              : "border-white/[0.15] bg-prsElevated text-white/70 hover:border-prsPrimary/50 hover:text-prsPrimary"
-          }`}
+          className={`absolute -bottom-2 left-1/2 z-20 flex size-7 -translate-x-1/2 items-center justify-center rounded-full border shadow-lg transition-all hover:scale-110 ${isTracked
+            ? "border-prsPrimary/60 bg-prsPrimaryDark text-white"
+            : "border-white/15 bg-prsElevated text-white/70 hover:border-prsPrimary/50 hover:text-prsPrimary"
+            }`}
         >
           {isTracked ? (
             <Check className="size-3.5" />

@@ -53,7 +53,7 @@ export default function CategoryRow({
           <h2 className="text-lg font-bold tracking-tight text-white">{title}</h2>
         </div>
         {!loading && items.length > 0 && (
-          <span className="rounded-full border border-prsPrimary/20 bg-prsPrimary/[0.06] px-2.5 py-1 text-xs font-medium text-white/50">
+          <span className="rounded-full border border-prsPrimary/20 bg-prsPrimary/6 px-2.5 py-1 text-xs font-medium text-white/50">
             {items.length} titles
           </span>
         )}
@@ -63,7 +63,7 @@ export default function CategoryRow({
         <button
           onClick={() => scroll("left")}
           disabled={!canLeft}
-          className="absolute top-1/2 left-0 z-20 flex size-10 -translate-y-1/2 -translate-x-5 items-center justify-center rounded-full border border-prsPrimary/30 bg-prsBg/70 text-white opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 hover:border-prsPrimary/50 hover:bg-prsPrimary/10 hover:text-prsPrimary group-hover/row:opacity-100 disabled:!opacity-0"
+          className="absolute top-1/2 left-0 z-20 flex size-10 -translate-y-1/2 -translate-x-5 items-center justify-center rounded-full border border-prsPrimary/30 bg-prsBg/70 text-white opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 hover:border-prsPrimary/50 hover:bg-prsPrimary/10 hover:text-prsPrimary group-hover/row:opacity-100 disabled:opacity-0"
           aria-label="Scroll left"
         >
           <ChevronLeft className="size-5" />
@@ -77,37 +77,37 @@ export default function CategoryRow({
         >
           {loading
             ? Array.from({ length: 8 }).map((_, i) => (
-                <div
-                  key={i}
-                  className="h-[230px] w-[154px] shrink-0 animate-pulse rounded-2xl bg-white/[0.05]"
-                  style={{ animationDelay: `${i * 60}ms` }}
-                />
-              ))
+              <div
+                key={i}
+                className="h-57.5 w-38.5 shrink-0 animate-pulse rounded-2xl bg-white/5"
+                style={{ animationDelay: `${i * 60}ms` }}
+              />
+            ))
             : items.map((item, i) => (
-                <MediaCard
-                  key={String(item.ids?.tmdb ?? `${title}-${i}`)}
-                  item={item}
-                  index={i}
-                  onOpen={onOpen}
-                  tracked={
-                    trackedMap?.[`${item.mediaType}:${item.ids?.tmdb}`] ?? null
-                  }
-                  onQuickAdd={onQuickAdd}
-                />
-              ))}
+              <MediaCard
+                key={String(item.ids?.tmdb ?? `${title}-${i}`)}
+                item={item}
+                index={i}
+                onOpen={onOpen}
+                tracked={
+                  trackedMap?.[`${item.mediaType}:${item.ids?.tmdb}`] ?? null
+                }
+                onQuickAdd={onQuickAdd}
+              />
+            ))}
         </div>
 
         <button
           onClick={() => scroll("right")}
           disabled={!canRight}
-          className="absolute top-1/2 right-0 z-20 flex size-10 translate-x-5 -translate-y-1/2 items-center justify-center rounded-full border border-prsPrimary/30 bg-prsBg/70 text-white opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 hover:border-prsPrimary/50 hover:bg-prsPrimary/10 hover:text-prsPrimary group-hover/row:opacity-100 disabled:!opacity-0"
+          className="absolute top-1/2 right-0 z-20 flex size-10 translate-x-5 -translate-y-1/2 items-center justify-center rounded-full border border-prsPrimary/30 bg-prsBg/70 text-white opacity-0 shadow-xl backdrop-blur-sm transition-all duration-200 hover:border-prsPrimary/50 hover:bg-prsPrimary/10 hover:text-prsPrimary group-hover/row:opacity-100 disabled:opacity-0"
           aria-label="Scroll right"
         >
           <ChevronRight className="size-5" />
         </button>
 
-        <div className="pointer-events-none absolute bottom-2 top-0 left-0 z-10 w-8 bg-gradient-to-r from-prsBg to-transparent" />
-        <div className="pointer-events-none absolute bottom-2 top-0 right-0 z-10 w-8 bg-gradient-to-l from-prsBg to-transparent" />
+        <div className="pointer-events-none absolute bottom-2 top-0 left-0 z-10 w-8 bg-linear-to-r from-prsBg to-transparent" />
+        <div className="pointer-events-none absolute bottom-2 top-0 right-0 z-10 w-8 bg-linear-to-l from-prsBg to-transparent" />
       </div>
     </section>
   )

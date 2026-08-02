@@ -81,11 +81,11 @@ export default function TrackModal({
         className="relative w-full max-w-md overflow-hidden rounded-3xl border border-prsPrimary/25 bg-prsSurface shadow-[0_32px_80px_rgba(0,0,0,0.9)] animate-scale-in"
         onClick={e => e.stopPropagation()}
       >
-        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-gradient-to-r from-transparent via-prsPrimary/50 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 z-10 h-px bg-linear-to-r from-transparent via-prsPrimary/50 to-transparent" />
 
         {/* Header */}
         <div className="flex items-start gap-4 p-5">
-          <div className="relative h-28 w-19 shrink-0 overflow-hidden rounded-xl border border-prsPrimary/25 bg-white/[0.03]">
+          <div className="relative h-28 w-19 shrink-0 overflow-hidden rounded-xl border border-prsPrimary/25 bg-white/3">
             {posterUrl ? (
               <Image
                 src={posterUrl}
@@ -111,7 +111,7 @@ export default function TrackModal({
               </span>
               <button
                 onClick={onClose}
-                className="ml-auto flex size-8 items-center justify-center rounded-full border border-white/[0.1] text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
+                className="ml-auto flex size-8 items-center justify-center rounded-full border border-white/10 text-white/50 transition-colors hover:border-prsPrimary/40 hover:text-white"
                 aria-label="Close"
               >
                 <X className="size-4" />
@@ -134,11 +134,10 @@ export default function TrackModal({
               <button
                 key={value}
                 onClick={() => setStatus(value)}
-                className={`flex flex-col items-center gap-1.5 rounded-2xl border px-2 py-3 text-[11px] font-semibold transition-all ${
-                  status === value
-                    ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary shadow-[0_0_16px_rgba(99,102,241,0.2)]"
-                    : "border-white/[0.08] bg-white/[0.03] text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
-                }`}
+                className={`flex flex-col items-center gap-1.5 rounded-2xl border px-2 py-3 text-[11px] font-semibold transition-all ${status === value
+                  ? "border-prsPrimary/60 bg-prsPrimary/15 text-prsPrimary shadow-[0_0_16px_rgba(99,102,241,0.2)]"
+                  : "border-white/8 bg-white/3 text-white/50 hover:border-prsPrimary/30 hover:text-white/80"
+                  }`}
               >
                 <Icon className="size-4" />
                 {label}
@@ -171,7 +170,7 @@ export default function TrackModal({
         <div className="flex gap-2 p-5">
           <button
             onClick={onClose}
-            className="flex-1 rounded-2xl border border-white/[0.1] py-2.5 text-sm font-semibold text-white/60 transition-colors hover:bg-white/[0.05]"
+            className="flex-1 rounded-2xl border border-white/10 py-2.5 text-sm font-semibold text-white/60 transition-colors hover:bg-white/5"
           >
             Cancel
           </button>

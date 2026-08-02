@@ -5,8 +5,8 @@ import { AuthProviderWrapper } from "@/components/AuthProviderWrapper"
 import Navbar from "@/components/Navbar"
 
 export const metadata: Metadata = {
-  title: "MovieTrack",
-  description: "Track and manage your movie watchlist",
+  title: "TrackMe",
+  description: "Track and manage your watchlist with TrackMe",
   icons: {
     icon: "/icon2.png"
   },
